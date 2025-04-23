@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Doçuras da Ana</title>
+  <style>
+    body {
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      background: linear-gradient(to right, #ffe4e1, #fff0f5);
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #ff69b4;
+      color: white;
+      padding: 30px 20px;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    header h1 {
+      font-size: 3em;
+      margin: 0;
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      background-color: #ffc0cb;
+      padding: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    nav a {
+      margin: 0 20px;
+      color: #8b0000;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.1em;
+      transition: color 0.3s ease;
+    }
+    nav a:hover {
+      color: #ff1493;
+    }
+    .content-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      margin: 30px auto;
+      max-width: 1200px;
+    }
+    section {
+      width: 280px;
+      padding: 30px;
+      background-color: white;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+      flex-shrink: 0;
+    }
+    section:hover {
+      transform: scale(1.01);
+    }
+    h2 {
+      color: #d63384;
+    }
+    ul {
+      list-style-type: square;
+      padding-left: 20px;
+    }
+    button {
+      background-color: #ff69b4;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-size: 1em;
+      cursor: pointer;
+      margin-top: 10px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: #ff1493;
+    }
+    .hidden {
+      display: none;
+    }
+    footer {
+      background-color: #ff69b4;
+      color: white;
+      text-align: center;
+      padding: 20px 10px;
+      margin-top: 40px;
+      box-shadow: 0 -2px 6px rgba(0,0,0,0.1);
+    }
+    footer p {
+      margin: 5px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Doçuras da Ana</h1>
+    <p>Confeitaria artesanal com sabor e carinho</p>
+  </header>
+  <nav>
+    <a href="#" onclick="showTab('sobre')">Sobre a Loja</a>
+    <a href="#" onclick="showTab('cardapio')">Cardápio</a>
+    <a href="#" onclick="showTab('delivery')">Delivery</a>
+  </nav>
+
+  <div class="content-wrapper">
+    <section id="sobre">
+      <h2>Sobre a Loja</h2>
+      <p>Bem-vindo à <strong>Doçuras da Ana</strong>! Somos apaixonados por confeitaria artesanal e temos uma grande variedade de doces feitos com amor. Nosso objetivo é adoçar a vida dos nossos clientes com qualidade e carinho. Venha nos visitar ou faça seu pedido online!</p>
+    </section>
+
+    <section id="cardapio" class="hidden">
+      <h2>Cardápio</h2>
+      <ul>
+        <li>Bolo de cenoura com cobertura de chocolate 🍫</li>
+        <li>Brigadeiro gourmet 🍬</li>
+        <li>Cheesecake de frutas vermelhas 🍓</li>
+        <li>Torta de limão 🍋</li>
+        <li>Docinhos para festas 🎉</li>
+      </ul>
+      <p><strong>Contato para encomendas:</strong> (41) 99999-9999</p>
+    </section>
+
+    <section id="delivery" class="hidden">
+      <h2>Serviço de Delivery</h2>
+      <p>Oferecemos serviço de entrega para Curitiba e região. Faça seu pedido pelo nosso WhatsApp e receba os melhores doces no conforto da sua casa!</p>
+      <button onclick="window.open('https://wa.me/5541999999999')">📲 Fazer Pedido</button>
+    </section>
+  </div>
+    
+  <footer>
+    <p>&copy; 2025 Doçuras da Ana. Todos os direitos reservados.</p>
+    <p>Endereço: Rua das Rosas, 123 - Curitiba/PR</p>
+  </footer>
+
+  <script>
+    function showTab(tabId) {
+      document.querySelectorAll('section').forEach(sec => sec.classList.add('hidden'));
+      document.getElementById(tabId).classList.remove('hidden');
+    }
+  </script>
+</body>
+</html>
