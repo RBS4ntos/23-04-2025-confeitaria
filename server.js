@@ -23,7 +23,7 @@ app.post('/api/mysql', async (req, res) => {
         case 'cadastro':
             try {
                 var [rows, fields] = await pool.query(
-                    "insert into `confeitaria`.`tbl_clientes` (`nome`, `login`, `senha`) values (?, ?, md5  ?);",
+                    "insert into `confeitaria`.`tbl_clientes` (`nome`, `login`, `senha`) values (?, ?, ?);",
                     [nome, login, senha]
                 );
                 if (rows.affectedRows > 0) {
