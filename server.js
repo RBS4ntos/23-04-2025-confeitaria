@@ -11,7 +11,7 @@ app.use(express.json());
 app.use(express.static('.')); 
 
 const pool = mysql.createPool({
-    host: '127.0.0.1:3306',
+    host: '127.0.0.1',
     user: 'root',
     password: 'senac@02',
     database: 'confeitaria'
