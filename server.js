@@ -24,7 +24,7 @@ app.post('/api/mysql', async (req, res) => {
         case 'cadastro':
             try {
                 var [rows, fields] = await pool.query(
-                    "insert into `tbl_clientes` (`nome`, `login`, `senha`) values (?, ?, ?);",
+                    "insert into `railway`.`tbl_clientes` (`nome`, `login`, `senha`) values (?, ?, ?);",
                     [nome, login, senha]
                 );
                 if (rows.affectedRows > 0) {
@@ -42,7 +42,7 @@ app.post('/api/mysql', async (req, res) => {
         case 'login':
             try {
                 var [rows, fields] = await pool.query(
-                    "select * from `tbl_clientes` where `nome` = ? and `login` = ? and `senha` = ?;",
+                    "select * from `railway`.`tbl_clientes` where `nome` = ? and `login` = ? and `senha` = ?;",
                     [nome, login, senha]
                 );
                 if (rows.length == 1) {
