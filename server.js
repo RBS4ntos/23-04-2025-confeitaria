@@ -14,7 +14,7 @@ const pool = mysql.createPool({
     host: 'switchyard.proxy.rlwy.net',
     port: 33052,
     user: 'root',
-    password: 'senac@02',
+    password: 'myksRJYWeuHmzxnnlVniEBzfVlWWLPMC',
     database: 'railway'
 });
 
