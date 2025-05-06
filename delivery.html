@@ -20,7 +20,7 @@
             text-align: center;
             color: #504136;
         }
-
+        
         .sidebar {
             height: 100%;
             width: 0;
@@ -102,7 +102,11 @@
             border: none;
             cursor: pointer;
             transition: background-color 0.3s, color 0.3s;
+            width: 40%;
+            height: 10%;
+            margin-top: 25px;
         }
+
 
         section button:hover {
             background-color: #bb658c;
@@ -114,7 +118,7 @@
         }
         section {
             width: 20%;
-            margin: 30px auto;
+            margin: 10px auto;
             padding: 30px;
             background-color: white;
             border-radius: 15px;
@@ -124,9 +128,11 @@
 
         section img {
             margin-left: 30px;
-            height: auto;
+            height: 50%;
             width: 80%;
         }
+
+
 
         .cards-container {
             display: flex;
@@ -135,6 +141,20 @@
             padding: 30px;
             flex-wrap: wrap; /* caso fique pequeno na tela */
         }
+
+        .footer {
+            background-color: #504136;
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 50px;
+        }
+
+        .fa-brands{
+            text-align: center;
+            margin-left: 50px;
+        }
+
     </style>
 </head>
 <body>
@@ -155,116 +175,123 @@
     <div class="menu-header">
 
     </div>
-    <div>
-        <h4 class="texto">Número de contato :43 99999-9999</h6>
-    </div>
-    <div><h3 class="texto">Bolos</h3></div>
+
+    <div><h1 class="texto">Bolos</h1></div>
     <div class="cards-container">
         <section>
             <img src="./BoloDeChocolate.jpg" id="img">
-            <h3 class="texto">Bolo de Chocolate</h3>
-            <h1>R$ 74,99</h1>
-            <button>Comprar</button>
+            <h2 class="texto">Bolo de Chocolate</h2>
+            <h1 class="texto">R$ 74,99</h1>
+            <button class="butao" >Comprar</button>
         </section>
         <section>
             <img src="./BoloDeCenora.jpg" id="img">
-            <h3 class="texto">Bolo de Cenoura</h3>
-            <h1>R$ 74,99</h1>
-            <button>Comprar</button>
+            <h2 class="texto">Bolo de Cenoura</h2>
+            <h1 class="texto">R$ 74,99</h1>
+            <button class="butao">Comprar</button>
         </section>
         <section>
             <img src="./BoloDeMorango.jpg" id="img">
-            <h3 class="texto">Bolo de Morango</h3>
-            <h1>R$ 74,99</h1>
-            <button>Comprar</button>
+            <h2 class="texto">Bolo de Morango</h2>
+            <h1 class="texto">R$ 74,99</h1>
+            <button class="butao">Comprar</button>
         </section>
         <section>
             <img src="./BoloRedVelvet.png" id="img">
-            <h3 class="texto">Bolo Red Velvet</h3>
-            <h1>R$ 74,99</h1>
-            <button>Comprar</button>
+            <h2 class="texto">Bolo Red Velvet</h2>
+            <h1 class="texto">R$ 74,99</h1>
+            <button class="butao">Comprar</button>
         </section>
     </div>
-    <div><h3 class="texto">Cupcakes</h3></div>
+    <d2v><h1 class="texto">Cupcakes</h1></div>
     <div class="cards-container">
         <section>
             <img src="./CupcakeDeCereja.png" id="img">
-            <h3 class="texto">Cupcakes de Cereja</h3>
-            <h1>R$ 74,99</h1>
-            <button>Comprar</button>
+            <h2 class="texto">Cupcakes de <p>Cereja</p></h2>
+            <h1 class="texto">R$ 74,99</h1>
+            <button class="butao">Comprar</button>
         </section>
         <section>
             <img src="./CupcakeDeChocolate.png" id="img">
-            <h3 class="texto">Cupcakes de Chocolate</h3>
-            <h1>R$ 74,99</h1>
-            <button>Comprar</button>
+            <h2 class="texto">Cupcakes de Chocolate</h2>
+            <h1 class="texto">R$ 74,99</h1>
+            <button class="butao">Comprar</button>
         </section>
         <section>
             <img src="./CupcakeDeRedVelvet.png" id="img">
-            <h3 class="texto">Cupcakes de Redvelvet</h3>
-            <h1>R$ 74,99</h1>
-            <button>Comprar</button>
+            <h2 class="texto">Cupcakes de Redvelvet</h2>
+            <h1 class="texto">R$ 74,99</h1>
+            <button class="butao">Comprar</button>
         </section>
         <section>
             <img src="./CupcakeDeBaunilha.png" id="img">
-            <h3 class="texto">Cupcakes de Baunilha</h3>
-            <h1>R$ 74,99</h1>
-            <button>Comprar</button>
+            <h2 class="texto">Cupcakes de Baunilha</h2>
+            <h1 class="texto">R$ 74,99</h1>
+            <button class="butao">Comprar</button>
         </section>
     </div>
-    <div><h3 class="texto">Doces</h3></div>
+    <div><h1 class="texto">Doces</h1></div>
     <div class="cards-container">
         <section>
             <img src="./DoceDeBichoDePe.png" id="img">
-            <h3 class="texto">Doce de bicho de pé</h3>
-            <h1>R$ 74,99</h1>
-            <button>Comprar</button>
+            <h2 class="texto">Doce de bicho de pé</h2>
+            <h1 class="texto">R$ 74,99</h1>
+            <button class="butao">Comprar</button>
         </section>
         <section>
             <img src="./DoceDeBrigadeiro.png" id="img">
-            <h3 class="texto">Brigadeiro</h3>
-            <h1>R$ 74,99</h1>
-            <button>Comprar</button>
+            <h2 class="texto">Brigadeiro</h2>
+            <h1 class="texto">R$ 74,99</h1>
+            <button class="butao">Comprar</button>
         </section>
         <section>
             <img src="./DoceDeNinho.png" id="img">
-            <h3 class="texto">Doce de Ninho</h3>
-            <h1>R$ 74,99</h1>
-            <button>Comprar</button>
+            <h2 class="texto">Doce de Ninho</h2>
+            <h1 class="texto">R$ 74,99</h1>
+            <button class="butao">Comprar</button>
         </section>
         <section>
             <img src="./DoceDeSupresaDeUva.png" id="img">
-            <h3 class="texto">Doce de supresa de uva</h3>
-            <h1>R$ 74,99</h1>
-            <button>Comprar</button>
+            <h2 class="texto">Doce supresa de uva</h2>
+            <h1 class="texto">R$ 74,99</h1>
+            <button class="butao">Comprar</button>
         </section>
     </div>
-    <div><h3 class="texto">Pascoa</h3></div>
+    <div><h1 class="texto">Pascoa</h1></div>
     <div class="cards-container">
         <section>
             <img src="./OvoRecheado.png" id="img">
-            <h3 class="texto">Ovo de Pascoa recheado</h3>
-            <h1>R$ 74,99</h1>
-            <button>Comprar</button>
+            <h2 class="texto">Ovo de Pascoa recheado</h2>
+            <h1 class="texto">R$ 74,99</h1>
+            <button class="butao">Comprar</button>
         </section>
         <section>
             <img src="./OvoSimples.png" id="img">
-            <h3 class="texto">Ovo de Pascoa simples</h3>
-            <h1>R$ 74,99</h1>
-            <button>Comprar</button>
+            <h2 class="texto">Ovo de Pascoa simples</h2>
+            <h1 class="texto">R$ 74,99</h1>
+            <button class="butao">Comprar</button>
         </section>
         <section>
             <img src="./ComboDeOvos.png" id="img">
-            <h3 class="texto">Combo de ovos de Pascoa</h3>
-            <h1>R$ 74,99</h1>
-            <button>Comprar</button>
+            <h2 class="texto">Combo de ovos de Pascoa</h2>
+            <h1 class="texto">R$ 74,99</h1>
+            <button class="butao">Comprar</button>
         </section>
         <section>
             <img src="./OvoDeCafé.png" id="img">
-            <h3 class="texto">Ovo de Brigadeiro de Café</h3>
-            <h1>R$ 74,99</h1>
-            <button>Comprar</button>
+            <h2 class="texto">Ovo de Brigadeiro de Café</h2>
+            <h1 class="texto">R$ 74,99</h1>
+            <button class="butao">Comprar</button>
         </section>
+    </div>
+
+    <div class="footer">
+        <p>
+            <i class="fa-brands fa-instagram"> seu_instagram</i>
+            <i class="fa-brands fa-whatsapp"> 43 99999-9999</i>
+            <i class="fa-brands fa-x-twitter"> seu_x_aqui</i>
+            <i class="fa-brands fa-facebook"> seu_facebook</i>
+        </p>
     </div>
 
 
