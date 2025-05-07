@@ -173,11 +173,3 @@ function purecookieDismiss() {
 cookieConsent();
 
 };
-
-function abrirMenu() {
-    document.getElementById("sidebar").style.width = "250px";
-}
-
-function fecharMenu() {
-    document.getElementById("sidebar").style.width = "0";
-}
