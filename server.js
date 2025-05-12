@@ -42,8 +42,8 @@ app.post('/api/mysql', async (req, res) => {
         case 'login':
             try {
                 var [rows, fields] = await pool.query(
-                    "select * from `railway`.`tbl_clientes` where `nome` = ? and `login` = ? and `senha` = ?;",
-                    [nome, login, senha]
+                    "select * from `railway`.`tbl_clientes` where `login` = ? and `senha` = ?;",
+                    [login, senha]
                 );
                 if (rows.length == 1) {
                     res.json({ message: 'Usuário logado com sucesso!'});

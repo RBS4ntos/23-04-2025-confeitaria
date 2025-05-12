@@ -78,3 +78,27 @@
         width: 100% !important;
     }
 }
+
+.historia-modal .modal-content {
+	border-radius: 20px;
+	overflow: hidden;
+	border: none;
+  }
+
+  .historia-modal .modal-header {
+	background: linear-gradient(135deg, var(--rosa-escuro), var(--rosa-vibrante));
+	color: white;
+	border-bottom: none;
+	padding: 20px;
+  }
+
+  .historia-modal .modal-body {
+	padding: 30px;
+	background-color: var(--rosa-claro);
+  }
+
+  .historia-modal .modal-footer {
+	background-color: var(--rosa-medio);
+	border-top: none;
+	justify-content: center;
+  }

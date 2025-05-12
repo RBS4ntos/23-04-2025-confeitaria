@@ -24,7 +24,6 @@ window.onload = function () {
     document.getElementById('frmLogin').addEventListener('submit', async (e) => {
         e.preventDefault();
         
-        const nome = document.getElementById('txtNome').value;
         const login = document.getElementById('txtLogin').value;
         const senha = document.getElementById('txtSenha').value;
         const notificacao = document.getElementById('notificacao');
@@ -34,7 +33,7 @@ window.onload = function () {
             const response = await fetch('/api/mysql', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ nome, login, senha, tipo })
+                body: JSON.stringify({ login, senha, tipo })
             });
 
             const result = await response.json();
@@ -174,3 +173,7 @@ cookieConsent();
 
 };
 
+function abrirHistoria() {
+    var historiaModal = new bootstrap.Modal(document.getElementById('historiaModal'));
+    historiaModal.show();
+  }

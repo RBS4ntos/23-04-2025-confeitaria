@@ -9,79 +9,78 @@
 	--branco: #ffffff;
   }
 
-		.carousel-item img {
-			object-fit: cover;
-			height: 750px;
-		}
 
-		body {
-			padding: 0;
-			margin: 0;
-			font-family: Arial, sans-serif;
-			background-color: #F9F1EC;
-		}
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: #FFF9FB;
+    color: #5A3D2B;
+}
 
-		.texto {
-			font-family: 'Comic Sans MS', cursive, sans-serif;
-			text-align: center;
-			color: #504136;
-			width: 60%;
-			margin: 0 auto;
-		}
+body.menu-aberto {
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+}
 
-		.img {
-			text-align: center;
-			width: 80%;
-			margin: 40px auto;
-		}
+/* Sidebar */
+.sidebar {
+    height: 100%;
+    width: 280px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #FFF0F5;
+    overflow-x: hidden;
+    transition: transform 0.4s ease;
+    transform: translateX(-100%);
+    z-index: 1100;
+    box-shadow: 5px 0 15px rgba(0, 0, 0, 0.1);
+    padding-top: 80px;
+}
 
+.sidebar.aberta {
+    transform: translateX(0);
+}
 
-		.sidebar {
-			height: 100%;
-			width: 250px;
-			position: fixed;
-			top: 0;
-			left: 0;
-			background-color: #fff0f6;
-			overflow-x: hidden;
-			transition: transform 0.4s ease;
-			transform: translateX(-100%);
-			z-index: 1100;
-			box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
-			padding-top: 60px;
-		}
+.sidebar a {
+    padding: 15px 25px;
+    text-decoration: none;
+    font-size: 18px;
+    color: #B03B6F;
+    display: block;
+    transition: all 0.3s;
+    border-left: 4px solid transparent;
+}
 
-		.sidebar.aberta {
-			transform: translateX(0);
-		}
+.sidebar a:hover {
+    background-color: #FFE5EE;
+    color: #8A2D56;
+    border-left: 4px solid #D63384;
+}
 
-		.sidebar a {
-			font-family: 'Comic Sans MS', cursive, sans-serif;
-			padding: 12px 20px;
-			text-decoration: none;
-			font-size: 18px;
-			color: #b03b6f;
-			display: block;
-			transition: background 0.3s;
-		}
+.sidebar a i {
+    margin-right: 10px;
+    width: 20px;
+    text-align: center;
+}
 
-		.sidebar a:hover {
-			background-color: #f8d9e6;
-			color: #6b304b;
-		}
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 24px;
+    background: none;
+    border: none;
+    color: #B03B6F;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
 
-		.close-btn {
-			position: absolute;
-			top: 10px;
-			right: 20px;
-			font-size: 24px;
-			background: none;
-			border: none;
-			color: #b03b6f;
-			cursor: pointer;
-		}
+.close-btn:hover {
+    transform: rotate(90deg);
+}
 
-/* Estilos Gerais do Cabeçalho */
 .main-header {
     position: relative;
     z-index: 1000;
@@ -266,325 +265,202 @@
         font-size: 1.8rem;
     }
 }
-			
-		.sidebar {
-			height: 100%;
-			width: 250px;
-			position: fixed;
-			top: 0;
-			left: 0;
-			background-color: #fff0f6;
-			overflow-x: hidden;
-			transition: transform 0.4s ease;
-			transform: translateX(-100%);
-			z-index: 1100;
-			box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
-			padding-top: 60px;
-		}
+/* Hero Banner */
+.hero-banner {
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('./hero-bg.jpg') center/cover no-repeat;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+    margin-bottom: 40px;
+}
 
-		.sidebar.aberta {
-			transform: translateX(0);
-		}
+.hero-content h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
 
-		.sidebar a {
-			font-family: 'Comic Sans MS', cursive, sans-serif;
-			padding: 12px 20px;
-			text-decoration: none;
-			font-size: 18px;
-			color: #b03b6f;
-			display: block;
-			transition: background 0.3s;
-		}
+.hero-content p {
+    font-size: 1.2rem;
+    font-weight: 300;
+}
 
-		.sidebar a:hover {
-			background-color: #f8d9e6;
-			color: #6b304b;
-		}
+/* Categorias */
+.category-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 40px;
+}
 
-		.close-btn {
-			position: absolute;
-			top: 10px;
-			right: 20px;
-			font-size: 24px;
-			background: none;
-			border: none;
-			color: #b03b6f;
-			cursor: pointer;
-		}
+.category-line {
+    flex: 1;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #D63384, transparent);
+}
 
-		.menu-button {
-			position: absolute;
-			top: 20px;
-			left: 20px;
-			font-size: 24px;
-			color: #504136;
-			cursor: pointer;
-			z-index: 1000;
-		}
+.category-title {
+    margin: 0 20px;
+    font-size: 2rem;
+    color: #8A2D56;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
 
-		.container-custom {
-			display:flex;
-			flex-direction: column;
-			background-color: #fff0f6;
-			border-radius: 20px;
-			box-shadow: 0 0 30px rgba(255, 182, 193, 0.4);
-			width: 100%;
-			max-width: 1200px;
-			overflow :hidden;
-		}
-
-		.content {
-			width: 100%;
-			display: flex;
-			flex-direction: row;
-		}
-
-		.left-panel {
-			flex: 1;
-			background-color: #b03b6f;
-			color: #fff;
-			display: flex;
-			flex-direction: column;
-			justify-content: center;
-			align-items: center;
-			padding: 2rem;
-			text-align: center;
-		}
-
-		.left-panel img {
-			width: 200px;
-			margin-bottom: 1rem;
-		}
-
-		.left-panel h2 {
-			font-size: 1.8rem;
-			margin-bottom: 1rem;
-		}
-
-		.left-panel p {
-			font-size: 1rem;
-			color: #f8d9e6;
-		}
-
-		.right-panel {
-			flex: 1;
-			background-color: #fff;
-			padding: 2.5rem;
-		}
-
-		.right-panel h2 {
-			text-align: center;
-			margin-bottom: 1.5rem;
-			color: #b03b6f;
-		}
-
-		.input-group {
-			position: relative;
-			margin-bottom: 1.2rem;
-		}
-
-		.input-group i {
-			position: absolute;
-			top: 50%;
-			left: 12px;
-			transform: translateY(-50%);
-			color: #b03b6f;
-		}
-
-		.form-control {
-			background-color: #fff0f6;
-			border: 1px solid #e6a4c5;
-			color: #5e1237;
-			border-radius: 10px;
-			padding-left: 40px;
-			}
-
-		.form-control::placeholder {
-			color: #b47894;
-			}
-
-		.btn-primary {
-			background-color: #b03b6f;
-			color: #fff;
-			border: none;
-			width: 100%;
-			border-radius: 30px;
-			margin-top: 1rem;
-			padding: 0.6rem;
-			font-weight: 500;
-			transition: background-color 0.3s ease;
-		}
-
-		.btn-primary:hover {
-			background-color: #c74c86;
-		}
-
-		.nav-links {
-			display: flex;
-			justify-content: center;
-			gap: 0.75rem;
-			padding: 1rem;
-			flex-wrap: wrap;
-		}
-
-		.nav-links a {
-			color: #b03b6f;
-			background-color: #ffe0ed;
-			padding: 0.5rem 1rem;
-			border-radius: 8px;
-			text-decoration: none;
-			font-size: 0.9rem;
-			transition: 0.3s;
-			display: flex;
-			align-items: center;
-			gap: 0.5rem;
-		}
-
-		.nav-links a:hover {
-			background-color: #b03b6f;
-			color: #fff;
-		}
-
-		.bi {
-			font-size: 1rem;
-		}
-
-		#notificacao {
-			text-align: center;
-			padding-bottom: 1rem;
-			color: #b03b6f;
-		}
-
-		.politica-privacidade {
-			position: fixed;
-			right: 30px;
-			bottom: 300px;
-			width: 350px;
-			height: 350px;
-			padding: 30px 30px 30px 30px;
-			background-color: #000;
-			color: #fff;
-			overflow: hidden;
-			overflow-y: scroll;
-			text-align: justify;
-			border-radius: 10px;
-		}
-
-		.cookieConsentContainer {
-			z-index: 999;
-			width: 350px;
-			min-height: 20px;
-			box-sizing: border-box;
-			padding: 30px 30px 30px 30px;
-			background: #232323;
-			overflow: hidden;
-			position: fixed;
-			bottom: 30px;
-			right: 30px;
-			display: none;
-		}
-
-		.cookieConsentContainer .cookieTitle a {
-			font-family: OpenSans, arial, sans-serif;
-			color: #fff;
-			font-size: 22px;
-			line-height: 20px;
-			display: block;
-		}
-
-		.cookieConsentContainer .cookieDesc p {
-			margin: 0;
-			padding: 0;
-			font-family: OpenSans, arial, sans-serif;
-			color: #fff;
-			font-size: 13px;
-			line-height: 20px;
-			display: block;
-			margin-top: 10px;
-		}
-
-		.cookieConsentContainer .cookieDesc a {
-			font-family: OpenSans, arial, sans-serif;
-			color: #fff;
-			text-decoration: underline;
-		}
-
-		.cookieConsentContainer .cookieButton a {
-			display: inline-block;
-			font-family: OpenSans, arial, sans-serif;
-			color: #fff;
-			font-size: 14px;
-			font-weight: 700;
-			margin-top: 14px;
-			background: #000;
-			box-sizing: border-box;
-			padding: 15px 24px;
-			text-align: center;
-			transition: background .3s;
-		}
-
-		.cookieConsentContainer .cookieButton a:hover {
-			cursor: pointer;
-			background: #3e9b67;
-		}
-
-		.footer {
-			background-color: #504136;
-			color: white;
-			text-align: center;
-			padding: 30px 0;
-			margin-top: 50px;
-		}
-
-
-		@media (max-width:980px) {
-			.cookieConsentContainer {
-				bottom: 0 !important;
-				left: 0 !important;
-				width: 100% !important;
-			}
-		}
-
-        /* Estilos para os cards de produtos */
-.product-card {
+/* Cards de Produto */
+.card-produto {
+    background-color: white;
     border-radius: 15px;
     overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border: none;
-}
-
-.product-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
-}
-
-.product-card .card-img-top {
-    height: 200px;
-    object-fit: cover;
-}
-
-.product-card .card-body {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    position: relative;
+    height: 100%;
     display: flex;
     flex-direction: column;
 }
 
-.product-card .price {
-    font-weight: bold;
-    color: #d63384; /* Cor rosa para combinar com o tema de confeitaria */
+.card-produto:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(214, 51, 132, 0.2);
+}
+
+.product-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background-color: #FFD700;
+    color: #5A3D2B;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    z-index: 1;
+}
+
+.card-produto img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.card-produto:hover img {
+    transform: scale(1.05);
+}
+
+.card-body {
+    padding: 20px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-produto h3 {
+    font-size: 1.3rem;
+    color: #5A3D2B;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.product-description {
+    color: #8A7F80;
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+    flex: 1;
+}
+
+.product-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
+}
+
+.price {
     font-size: 1.2rem;
+    font-weight: 700;
+    color: #D63384;
 }
 
-.product-card .btn-outline-primary {
-    border-color: #d63384;
-    color: #d63384;
+.btn-add-to-cart {
+    background-color: #D63384;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 5px;
 }
 
-.product-card .btn-outline-primary:hover {
-    background-color: #d63384;
+.btn-add-to-cart:hover {
+    background-color: #B03B6F;
+    transform: translateY(-2px);
+}
+
+.btn-add-to-cart i {
+    font-size: 1rem;
+}
+
+/* Newsletter */
+.newsletter-section {
+    background: linear-gradient(135deg, #FFB6C1 0%, #FF69B4 100%);
+    padding: 50px 0;
+    margin-top: 60px;
+    text-align: center;
     color: white;
 }
 
+.newsletter-section h3 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.newsletter-section p {
+    font-size: 1.1rem;
+    margin-bottom: 25px;
+    opacity: 0.9;
+}
+
+.newsletter-form {
+    display: flex;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.newsletter-form input {
+    flex: 1;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 30px 0 0 30px;
+    font-size: 1rem;
+}
+
+.newsletter-form button {
+    background-color: #5A3D2B;
+    color: white;
+    border: none;
+    padding: 0 25px;
+    border-radius: 0 30px 30px 0;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.newsletter-form button:hover {
+    background-color: #3D2A1D;
+}
 /* Footer Full Width Styles */
 .footer-fullwidth {
     width: 100%;
@@ -640,7 +516,7 @@
 
 /* Restante do CSS permanece igual ao anterior para os elementos internos */
 .footer-column li{
-	color: #FFB6C1;
+    color:#FFB6C1;
     padding: 0 15px;
 }
 

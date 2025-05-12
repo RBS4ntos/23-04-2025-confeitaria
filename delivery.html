@@ -1,317 +1,457 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
-  	<meta charset="UTF-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-	<title>Cardápio</title>
-	<link rel="stylesheet" href="./bootstrap-5.3.3-dist/css/bootstrap.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-
-	<style>
-		body {
-			margin: 0;
-			font-family: Arial, sans-serif;
-			background-color: #F9F1EC;
-		}
-
-		body.menu-aberto {
-			overflow: hidden;
-			position: fixed;
-			width: 100%;
-		}
-
-		.texto {
-			font-family: 'Comic Sans MS', cursive, sans-serif;
-			text-align: center;
-			color: #504136;
-		}
-
-		.sidebar {
-			height: 100%;
-			width: 250px;
-			position: fixed;
-			top: 0;
-			left: 0;
-			background-color: #fff0f6;
-			overflow-x: hidden;
-			transition: transform 0.4s ease;
-			transform: translateX(-100%);
-			z-index: 1100;
-			box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
-			padding-top: 60px;
-		}
-
-		.sidebar.aberta {
-			transform: translateX(0);
-		}
-
-		.sidebar a {
-			font-family: 'Comic Sans MS', cursive, sans-serif;
-			padding: 12px 20px;
-			text-decoration: none;
-			font-size: 18px;
-			color: #b03b6f;
-			display: block;
-			transition: background 0.3s;
-		}
-
-		.sidebar a:hover {
-			background-color: #f8d9e6;
-			color: #6b304b;
-		}
-
-		.close-btn {
-			position: absolute;
-			top: 10px;
-			right: 20px;
-			font-size: 24px;
-			background: none;
-			border: none;
-			color: #b03b6f;
-			cursor: pointer;
-		}
-
-		.menu-button {
-			position: absolute;
-			top: 20px;
-			left: 20px;
-			font-size: 24px;
-			color: #504136;
-			cursor: pointer;
-			z-index: 1000;
-		}
-
-		header.top-header {
-			font-family: 'Comic Sans MS', cursive, sans-serif;
-			background-color: #ff69b4;
-			color: white;
-			padding: 20px 0;
-			box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-			text-align: center;
-		}
-
-		.logo {
-			font-size: 24px;
-			font-weight: bold;
-			color: #fff;
-		}
-
-		.cards-container {
-			display: flex;
-			flex-wrap: wrap;
-			justify-content: center;
-			gap: 30px;
-			padding: 30px 10px;
-		}
-
-		.card-produto {
-			background-color: #fff;
-			width: 250px;
-			border-radius: 15px;
-			box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-			transition: transform 0.3s;
-			text-align: center;
-			padding: 20px;
-		}
-
-		.card-produto:hover {
-			transform: translateY(-5px);
-		}
-
-		.card-produto img {
-			width: 100%;
-			height: 180px;
-			object-fit: cover;
-			border-radius: 10px;
-		}
-
-		.card-produto h2 {
-			font-family: 'Comic Sans MS', cursive, sans-serif;
-			font-size: 20px;
-			color: #504136;
-			margin: 15px 0 10px;
-		}
-
-		.card-produto h1 {
-			font-size: 20px;
-			color: #6b304b;
-			margin-bottom: 15px;
-		}
-
-		.card-produto button {
-			padding: 10px 20px;
-			border-radius: 8px;
-			font-size: 16px;
-			background-color: #bb658c;
-			color: white;
-			border: none;
-			cursor: pointer;
-			transition: background-color 0.3s ease;
-		}
-
-		.card-produto button:hover {
-			background-color: #6b304b;
-		}
-
-		.footer {
-			background-color: #504136;
-			color: white;
-			text-align: center;
-			padding: 30px 0;
-			margin-top: 50px;
-		}
-
-		.fa-brands {
-			margin: 0 15px;
-		}
-	</style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Cardápio | Um Sonho de Açúcar</title>
+    <link rel="stylesheet" href="./bootstrap-5.3.3-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="./delivery.css">
 </head>
+
 <body>
 
- 	<div id="sidebar" class="sidebar">
-		<button class="close-btn" onclick="fecharMenu()"><i class="fa-solid fa-xmark"></i></button>
-		<a href="#"><i class="fa-solid fa-cart-shopping"></i> Meu Carrinho</a>
-		<a href="#"><i class="fa-solid fa-user"></i> Meu Perfil</a>
- 	</div>
+    <header class="main-header">
+        <div class="header-top">
+            <div class="container">
+                <div class="header-contact">
+                    <span><i class="fas fa-phone"></i> (43) 9999-9999</span>
+                    <span><i class="fas fa-envelope"></i> contato@sonhodeacucar.com</span>
+                </div>
+                <div class="header-social">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                </div>
+            </div>
+        </div>
 
-  	<header class="top-header">
-    	<div class="menu-button" onclick="abrirMenu()">
-      	<i class="fa-solid fa-bars"></i>
-    	</div>
-    	<div class="logo"><i class="fa-solid fa-cake-candles"></i> Um Sonho de Açúcar</div>
- 	 </header>
+        <div class="header-main">
+            <div class="container">
+                <div class="header-content">
+                    <div class="logo">
+                        <i class="fa-solid fa-cake-candles"></i>
+                        <span>Um Sonho de Açúcar</span>
+                    </div>
+                    
+                    <nav class="main-nav">
+                        <ul>
+                            <li><a href="./index.html">Início</a></li>
+                            <li><a href="#" data-bs-toggle="modal" data-bs-target="#historiaModal">Sobre Nós</a></li>
+                            <li><a href="./conta.html">Conta</a></li>
+                        </ul>
+                    </nav>
+                    
+                    <div class="header-actions">
+                        <a href="#" class="cart-icon">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                            <span class="cart-count">0</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
 
-  	<div><h1 class="texto">BOLOS</h1></div>
-	<div class="cards-container">
-		<div class="card-produto">
-			<img src="./BoloDeChocolate.jpg" alt="Bolo de Chocolate">
-			<h2>Bolo de Chocolate</h2>
-			<h1>R$ 74,99</h1>
-			<button>Comprar</button>
-		</div>
-		<div class="card-produto">
-			<img src="./BoloDeCenora.jpg" alt="Bolo de Cenoura">
-			<h2>Bolo de Cenoura</h2>
-			<h1>R$ 74,99</h1>
-			<button>Comprar</button>
-		</div>
-		<div class="card-produto">
-			<img src="./BoloDeMorango.jpg" alt="Bolo de Morango">
-			<h2>Bolo de Morango</h2>
-			<h1>R$ 74,99</h1>
-			<button>Comprar</button>
-		</div>
-		<div class="card-produto">
-			<img src="./BoloRedVelvet.png" alt="Bolo Red Velvet">
-			<h2>Bolo Red Velvet</h2>
-			<h1>R$ 74,99</h1>
-			<button>Comprar</button>
+      	<div class="modal fade historia-modal" id="historiaModal" tabindex="-1" aria-hidden="true">
+    	<div class="modal-dialog modal-dialog-centered modal-lg">
+      		<div class="modal-content">
+        		<div class="modal-header">
+					<h2 class="modal-title">
+						<i class="fa-solid fa-cake-candles"></i> Nossa Doce História
+					</h2>
+					<button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<div style="text-align: center; margin-bottom: 20px;">
+						<img src="./Sonho.png" alt="Logo Sweet Dreams" style="width: 150px; margin-bottom: 15px;">
+					</div>
+					<p style="text-align: justify; line-height: 1.6;">
+						Um Sonho de Açúcar era uma confeitaria mágica que surgiu de um sonho de infância. Seus donos, apaixonados por doces e arte, decidiram transformar sua paixão em realidade. Com muito amor e dedicação, criaram uma loja encantadora, onde cada doce era uma obra de arte.          </p>
+					<p style="text-align: justify; line-height: 1.6;">
+						Os clientes adoravam visitar Um Sonho de Açúcar não apenas para satisfazer seu paladar, mas também para se maravilhar com as criações incríveis. Bolos, tortas, cupcakes e outros doces eram feitos com ingredientes frescos e amor.
+					</p>
+					<p style="text-align: justify; line-height: 1.6;">
+						Com o tempo, a confeitaria se tornou um ponto de encontro para amigos e familiares, que se reuniam para compartilhar momentos felizes e doces. Um Sonho de Açúcar era mais do que uma confeitaria - era um lugar onde a magia acontecia e os sonhos se tornavam realidade.
+					</p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn" data-bs-dismiss="modal" style="background-color: var(--rosa-escuro); color: white;">
+						Fechar
+					</button>
+				</div>
+			</div>
 		</div>
 	</div>
 
-  	<div><h1 class="texto">CUPCAKES</h1></div>
-	<div class="cards-container">
-		<div class="card-produto">
-			<img src="./CupcakeDeCereja.png" alt="Cupcake de Cereja">
-			<h2>Cupcake de Cereja</h2>
-			<h1>R$ 74,99</h1>
-			<button>Comprar</button>
-		</div>
-		<div class="card-produto">
-			<img src="./CupcakeDeChocolate.png" alt="Cupcake de Chocolate">
-			<h2>Cupcake de Chocolate</h2>
-			<h1>R$ 74,99</h1>
-			<button>Comprar</button>
-		</div>
-		<div class="card-produto">
-			<img src="./CupcakeDeRedVelvet.png" alt="Cupcake Red Velvet">
-			<h2>Cupcake Red Velvet</h2>
-			<h1>R$ 74,99</h1>
-			<button>Comprar</button>
-		</div>
-		<div class="card-produto">
-			<img src="./CupcakeDeBaunilha.png" alt="Cupcake de Baunilha">
-			<h2>Cupcake de Baunilha</h2>
-			<h1>R$ 74,99</h1>
-			<button>Comprar</button>
-		</div>
-	</div>
 
-	<div><h1 class="texto">DOCES</h1></div>
-	<div class="cards-container">
-		<div class="card-produto">
-			<img src="./DoceDeBichoDePe.png" alt="Bicho de Pé">
-			<h2>Doce de Bicho de Pé</h2>
-			<h1>R$ 74,99</h1>
-			<button>Comprar</button>
-		</div>
-		<div class="card-produto">
-			<img src="./DoceDeBrigadeiro.png" alt="Brigadeiro">
-			<h2>Brigadeiro</h2>
-			<h1>R$ 74,99</h1>
-			<button>Comprar</button>
-		</div>
-		<div class="card-produto">
-			<img src="./DoceDeNinho.png" alt="Doce de Ninho">
-			<h2>Doce de Ninho</h2>
-			<h1>R$ 74,99</h1>
-			<button>Comprar</button>
-		</div>
-		<div class="card-produto">
-			<img src="./DoceDeSupresaDeUva.png" alt="Surpresa de Uva">
-			<h2>Surpresa de Uva</h2>
-			<h1>R$ 74,99</h1>
-			<button>Comprar</button>
-		</div>
-	</div>
+    <div class="hero-banner">
+        <div class="hero-content">
+            <h1>Nosso Cardápio Doce</h1>
+            <p>Delícias feitas com amor e o melhor açúcar</p>
+        </div>
+    </div>
 
-	<div><h1 class="texto">PÁSCOA</h1></div>
-	<div class="cards-container">
-		<div class="card-produto">
-			<img src="./OvoRecheado.png" alt="Ovo recheado">
-			<h2>Ovo de Páscoa Recheado</h2>
-			<h1>R$ 74,99</h1>
-			<button>Comprar</button>
-		</div>
-		<div class="card-produto">
-			<img src="./OvoSimples.png" alt="Ovo Simples">
-			<h2>Ovo de Páscoa Simples</h2>
-			<h1>R$ 74,99</h1>
-			<button>Comprar</button>
-		</div>
-		<div class="card-produto">
-			<img src="./ComboDeOvos.png" alt="Combo de Ovos">
-			<h2>Combo de Ovos de Páscoa</h2>
-			<h1>R$ 74,99</h1>
-			<button>Comprar</button>
-		</div>
-		<div class="card-produto">
-			<img src="./OvoDeCafé.png" alt="Ovo de Café">
-			<h2>Ovo de Brigadeiro de Café</h2>
-			<h1>R$ 74,99</h1>
-			<button>Comprar</button>
-		</div>
-	</div>
-	<div class="footer">
-		<p>
-			<i class="fa-brands fa-instagram"> seu_instagram</i>
-			<i class="fa-brands fa-whatsapp"> 43 99999-9999</i>
-			<i class="fa-brands fa-x-twitter"> seu_x_aqui</i>
-			<i class="fa-brands fa-facebook"> seu_facebook</i>
-		</p>
-	</div>
+    <!-- Seção de Bolos -->
+<div class="container mt-5">
+    <div class="category-header">
+        <div class="category-line"></div>
+        <h2 class="category-title">BOLOS</h2>
+        <div class="category-line"></div>
+    </div>
+    
+    <div class="row g-4">
+        <div class="col-md-6 col-lg-3">
+            <div class="card-produto">
+                <div class="product-badge">Mais Vendido</div>
+                <img src="./red_velvet.png" alt="Bolo Red Velvet">
+                <div class="card-body">
+                    <h3>Bolo Red Velvet</h3>
+                    <p class="product-description">Massa aveludada com cacau, recheio de cream cheese e cobertura suave</p>
+                    <div class="product-footer">
+                        <span class="price">R$ 89,90</span>
+                        <button class="btn-add-to-cart">
+                            <i class="fas fa-cart-plus"></i> Adicionar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+            <div class="card-produto">
+                <img src="./chocolate-bolo.jpg" alt="Bolo de Chocolate Belga">
+                <div class="card-body">
+                    <h3>Bolo de Chocolate Belga</h3>
+                    <p class="product-description">Chocolate 70% cacau com recheio de brigadeiro gourmet e ganache</p>
+                    <div class="product-footer">
+                        <span class="price">R$ 79,90</span>
+                        <button class="btn-add-to-cart">
+                            <i class="fas fa-cart-plus"></i> Adicionar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+            <div class="card-produto">
+                <img src="./morango-bolo.jpg" alt="Bolo de Morango">
+                <div class="card-body">
+                    <h3>Bolo de Morango</h3>
+                    <p class="product-description">Massa branca com recheio de creme de baunilha e morangos frescos</p>
+                    <div class="product-footer">
+                        <span class="price">R$ 85,00</span>
+                        <button class="btn-add-to-cart">
+                            <i class="fas fa-cart-plus"></i> Adicionar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+            <div class="card-produto">
+                <img src="./bolo-de-cenoura-com-ganache1.webp" alt="Bolo de Cenoura">
+                <div class="card-body">
+                    <h3>Bolo de Cenoura</h3>
+                    <p class="product-description">Massa úmida de cenoura com recheio de brigadeiro e cobertura de chocolate</p>
+                    <div class="product-footer">
+                        <span class="price">R$ 74,90</span>
+                        <button class="btn-add-to-cart">
+                            <i class="fas fa-cart-plus"></i> Adicionar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-  	<script>
-		function abrirMenu() {
-			document.getElementById("sidebar").classList.add("aberta");
-			document.body.classList.add("menu-aberto");
-		}
+<!-- Seção de Cupcakes -->
+<div class="container mt-5">
+    <div class="category-header">
+        <div class="category-line"></div>
+        <h2 class="category-title">CUPCAKES</h2>
+        <div class="category-line"></div>
+    </div>
+    
+    <div class="row g-4">
+        <div class="col-md-6 col-lg-3">
+            <div class="card-produto">
+                <div class="product-badge">Mais Vendido</div>
+                <img src="./redvelvet-cupcake.jpg" alt="Cupcake Red Velvet">
+                <div class="card-body">
+                    <h3>Cupcake Red Velvet</h3>
+                    <p class="product-description">Massa aveludada com cobertura de cream cheese e raspas de chocolate</p>
+                    <div class="product-footer">
+                        <span class="price">R$ 12,90</span>
+                        <button class="btn-add-to-cart">
+                            <i class="fas fa-cart-plus"></i> Adicionar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+            <div class="card-produto">
+                <img src="./baunilha-cupcake.jpg" alt="Cupcake de Baunilha">
+                <div class="card-body">
+                    <h3>Cupcake de Baunilha</h3>
+                    <p class="product-description">Massa fofinha de baunilha com buttercream e confeitos coloridos</p>
+                    <div class="product-footer">
+                        <span class="price">R$ 10,90</span>
+                        <button class="btn-add-to-cart">
+                            <i class="fas fa-cart-plus"></i> Adicionar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+            <div class="card-produto">
+                <img src="./chocolate-cupcake.webp" alt="Cupcake de Chocolate">
+                <div class="card-body">
+                    <h3>Cupcake de Chocolate</h3>
+                    <p class="product-description">Massa de chocolate com recheio de brigadeiro e cobertura de ganache</p>
+                    <div class="product-footer">
+                        <span class="price">R$ 11,90</span>
+                        <button class="btn-add-to-cart">
+                            <i class="fas fa-cart-plus"></i> Adicionar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+            <div class="card-produto">
+                <img src="./morango-cupcake.webp" alt="Cupcake de Morango">
+                <div class="card-body">
+                    <h3>Cupcake de Morango</h3>
+                    <p class="product-description">Massa de baunilha com pedaços de morango e cobertura de buttercream rosê</p>
+                    <div class="product-footer">
+                        <span class="price">R$ 13,90</span>
+                        <button class="btn-add-to-cart">
+                            <i class="fas fa-cart-plus"></i> Adicionar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-		function fecharMenu() {
-			document.getElementById("sidebar").classList.remove("aberta");
-			document.body.classList.remove("menu-aberto");
-		}
-  	</script>
+<!-- Seção de Doces -->
+<div class="container mt-5">
+    <div class="category-header">
+        <div class="category-line"></div>
+        <h2 class="category-title">DOCES</h2>
+        <div class="category-line"></div>
+    </div>
+    
+    <div class="row g-4">
+        <div class="col-md-6 col-lg-3">
+            <div class="card-produto">
+                <div class="product-badge">Mais Vendido</div>
+                <img src="./brigadeiros.webp" alt="Caixa de Brigadeiros">
+                <div class="card-body">
+                    <h3>Caixa de Brigadeiros</h3>
+                    <p class="product-description">Combo contendo 12 unidades - Tradicional, ninho, café e beijinho</p>
+                    <div class="product-footer">
+                        <span class="price">R$ 45,00</span>
+                        <button class="btn-add-to-cart">
+                            <i class="fas fa-cart-plus"></i> Adicionar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+            <div class="card-produto">
+                <img src="./bicho-de-pé.jpg" alt="Bichos de Pé">
+                <div class="card-body">
+                    <h3>Bichos de Pé</h3>
+                    <p class="product-description">Doce tradicional feito com leite em pó, chocolate e coco ralado</p>
+                    <div class="product-footer">
+                        <span class="price">R$ 3,50/un</span>
+                        <button class="btn-add-to-cart">
+                            <i class="fas fa-cart-plus"></i> Adicionar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+            <div class="card-produto">
+                <img src="./doce-de-leite-ninho.jpg" alt="Brigadeiro de Ninho">
+                <div class="card-body">
+                    <h3>Brigadeiro de Ninho</h3>
+                    <p class="product-description">Feito com leite ninho e leite condensado, coberto com chocolate branco</p>
+                    <div class="product-footer">
+                        <span class="price">R$ 4,00/un</span>
+                        <button class="btn-add-to-cart">
+                            <i class="fas fa-cart-plus"></i> Adicionar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+            <div class="card-produto">
+                <img src="./brigadeiro.jpg" alt="Brigadeiro Gourmet">
+                <div class="card-body">
+                    <h3>Brigadeiro Gourmet</h3>
+                    <p class="product-description">Chocolate 70% cacau com toque de sal marinho e cobertura crocante</p>
+                    <div class="product-footer">
+                        <span class="price">R$ 4,50/un</span>
+                        <button class="btn-add-to-cart">
+                            <i class="fas fa-cart-plus"></i> Adicionar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Seção de Páscoa -->
+<div class="container mt-5">
+    <div class="category-header">
+        <div class="category-line"></div>
+        <h2 class="category-title">PÁSCOA</h2>
+        <div class="category-line"></div>
+    </div>
+    
+    <div class="row g-4">
+        <div class="col-md-6 col-lg-3">
+            <div class="card-produto">
+                <div class="product-badge">Mais Vendido</div>
+                <img src="./café-ovo-de-pascoa.jpeg" alt="Ovo de Café">
+                <div class="card-body">
+                    <h3>Ovo de Café</h3>
+                    <p class="product-description">Chocolate ao leite com recheio de brigadeiro de café (250g)</p>
+                    <div class="product-footer">
+                        <span class="price">R$ 59,90</span>
+                        <button class="btn-add-to-cart">
+                            <i class="fas fa-cart-plus"></i> Adicionar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-6 col-lg-3">
+            <div class="card-produto">
+                <img src="./ovotrufado.webp" alt="Ovo Trufado">
+                <div class="card-body">
+                    <h3>Ovo Trufado</h3>
+                    <p class="product-description">Chocolate meio amargo com recheio cremoso de avelã (300g)</p>
+                    <div class="product-footer">
+                        <span class="price">R$ 69,90</span>
+                        <button class="btn-add-to-cart">
+                            <i class="fas fa-cart-plus"></i> Adicionar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3">
+            <div class="card-produto">
+                <img src="./ovosimg.jpg" alt="Kit Ovos Mini">
+                <div class="card-body">
+                    <h3>Kit Ovos Mini</h3>
+                    <p class="product-description">4 ovos pequenos (100g cada) - sabores variados</p>
+                    <div class="product-footer">
+                        <span class="price">R$ 75,00</span>
+                        <button class="btn-add-to-cart">
+                            <i class="fas fa-cart-plus"></i> Adicionar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3">
+            <div class="card-produto">
+                <img src="./ovodemorango.jpg" alt="Ovo de Morango">
+                <div class="card-body">
+                    <h3>Ovo de Morango</h3>
+                    <p class="product-description">Chocolate branco com recheio de creme de morango (250g)</p>
+                    <div class="product-footer">
+                        <span class="price">R$ 64,90</span>
+                        <button class="btn-add-to-cart">
+                            <i class="fas fa-cart-plus"></i> Adicionar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    <footer class="footer-fullwidth">
+        <div class="footer-content-wrapper">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <div class="footer-logo">
+                        <i class="fa-solid fa-cake-candles"></i> Um Sonho de Açúcar
+                    </div>
+                    <p class="footer-about">
+                        Confeitaria artesanal que transforma momentos especiais em experiências inesquecíveis com nossos doces feitos com amor.
+                    </p>
+                    <div class="footer-payment">
+                        <p>Formas de pagamento:</p>
+                        <div class="payment-methods">
+                            <i class="fa-brands fa-cc-visa"></i>
+                            <i class="fa-brands fa-cc-mastercard"></i>
+                            <i class="fa-brands fa-cc-amex"></i>
+                            <i class="fa-brands fa-pix"></i>
+                            <i class="fa-solid fa-money-bill-wave"></i>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="footer-column">
+                    <h4 class="footer-title">Horário de Funcionamento</h4>
+                    <ul class="footer-hours">
+                        <li><span>Segunda-Sexta:</span> 9h - 19h</li>
+                        <li><span>Sábado:</span> 9h - 18h</li>
+                        <li><span>Domingo:</span> 10h - 15h</li>
+                        <li><span>Feriados:</span> 10h - 14h</li>
+                    </ul>
+        
+                </div>
+    
+                <div class="footer-column">
+                    <h4 class="footer-title">Contato</h4>
+                    <ul class="footer-contact">
+                        <li><i class="fas fa-map-marker-alt"></i> Rua Doce, 123 - Centro, Londrina/PR</li>
+                        <li><i class="fas fa-phone"></i> (43) 99999-9999</li>
+                        <li><i class="fas fa-envelope"></i> contato@umsonhodeacucar.com</li>
+                    </ul>
+                    <div class="footer-social">
+                        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                        <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <div class="footer-bottom-fullwidth">
+            <div class="footer-bottom-content">
+                <div class="footer-copyright">
+                    &copy; 2023 Um Sonho de Açúcar. Todos os direitos reservados.
+                </div>
+                <div class="footer-legal">
+                    <a href="#">Política de Privacidade</a>
+                    <a href="#">Termos de Uso</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+<script src="./bootstrap-5.3.3-dist/js/bootstrap.bundle.js"></script>
+<script src="./delivery.js"></script>
 </body>
 </html>
