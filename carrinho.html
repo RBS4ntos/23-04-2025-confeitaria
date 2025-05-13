@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrinho de Compras - Sugar Dreams</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./carrinho.css">
+</head>
+<body>
+    <header class="main-header">
+        <div class="header-top">
+            <div class="container">
+                <div class="header-contact">
+                    <span><i class="fas fa-phone"></i> (43) 9999-9999</span>
+                    <span><i class="fas fa-envelope"></i> contato@sonhodeacucar.com</span>
+                </div>
+                <div class="header-social">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="header-main">
+            <div class="container">
+                <div class="header-content">
+                    <div class="logo">
+                        <i class="fa-solid fa-cake-candles"></i>
+                        <span>Um Sonho de Açúcar</span>
+                    </div>
+                    
+                    <nav class="main-nav">
+                        <ul>
+                            <li><a href="./index.html">Início</a></li>
+                            <li><a href="#" data-bs-toggle="modal" data-bs-target="#historiaModal">Sobre Nós</a></li>
+                        </ul>
+                    </nav>
+                    
+                        <div class="header-actions">
+                        </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="cart-container">
+            <div class="cart-header">
+                <h1 class="cart-title"><i class="fas fa-shopping-cart"></i> Seu Carrinho</h1>
+            </div>
+            
+            <div id="cart-empty" class="empty-cart">
+                <i class="fas fa-cart-arrow-down empty-cart-icon"></i>
+                <p class="empty-cart-message">Seu carrinho está vazio</p>
+                <a href="./delivery.html" class="btn btn-primary">Continuar Comprando</a>
+            </div>
+
+            <div id="cart-items" style="display: none;">
+                <div id="cart-items-list">
+                </div>
+                
+                <div class="cart-summary">
+                    <div class="cart-total">
+                        <span>Total:</span>
+                        <span id="cart-total-price">R$ 0,00</span>
+                    </div>
+                    <button id="checkout-btn" onclick="finalizarCompra()" class="checkout-btn">Finalizar Compra</button>
+                    <a href="./delivery.html" class="continue-shopping">Continuar comprando</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+   <footer class="footer-fullwidth">
+        <div class="footer-content-wrapper">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <div class="footer-logo">
+                        <i class="fa-solid fa-cake-candles"></i> Um Sonho de Açúcar
+                    </div>
+                    <p class="footer-about">
+                        Confeitaria artesanal que transforma momentos especiais em experiências inesquecíveis com nossos doces feitos com amor.
+                    </p>
+                    <div class="footer-payment">
+                        <p>Formas de pagamento:</p>
+                        <div class="payment-methods">
+                            <i class="fa-brands fa-cc-visa"></i>
+                            <i class="fa-brands fa-cc-mastercard"></i>
+                            <i class="fa-brands fa-cc-amex"></i>
+                            <i class="fa-brands fa-pix"></i>
+                            <i class="fa-solid fa-money-bill-wave"></i>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="footer-column">
+                    <h4 class="footer-title">Horário de Funcionamento</h4>
+                    <ul class="footer-hours">
+                        <li><span>Segunda-Sexta:</span> 9h - 19h</li>
+                        <li><span>Sábado:</span> 9h - 18h</li>
+                        <li><span>Domingo:</span> 10h - 15h</li>
+                        <li><span>Feriados:</span> 10h - 14h</li>
+                    </ul>
+                </div>
+    
+                <div class="footer-column">
+                    <h4 class="footer-title">Contato</h4>
+                    <ul class="footer-contact">
+                        <li><i class="fas fa-map-marker-alt"></i> Rua Doce, 123 - Centro, Londrina/PR</li>
+                        <li><i class="fas fa-phone"></i> (43) 99999-9999</li>
+                        <li><i class="fas fa-envelope"></i> contato@umsonhodeacucar.com</li>
+                    </ul>
+                    <div class="footer-social">
+                        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                        <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <div class="footer-bottom-fullwidth">
+            <div class="footer-bottom-content">
+                <div class="footer-copyright">
+                    &copy; 2023 Um Sonho de Açúcar. Todos os direitos reservados.
+                </div>
+                <div class="footer-legal">
+                    <a href="#">Política de Privacidade</a>
+                    <a href="#">Termos de Uso</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./carrinho.js"></script>
+</body>
+</html>

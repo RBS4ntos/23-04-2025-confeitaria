@@ -328,8 +328,8 @@
 			background-color: #fff0f6;
 			border-radius: 20px;
 			box-shadow: 0 0 30px rgba(255, 182, 193, 0.4);
-			width: 100%;
-			max-width: 1200px;
+			width: 600px;
+			max-width: 600px;
 			overflow :hidden;
 		}
 
@@ -340,6 +340,7 @@
 		}
 
 		.left-panel {
+			width: 100%;
 			flex: 1;
 			background-color: #b03b6f;
 			color: #fff;
@@ -453,6 +454,33 @@
 			text-align: center;
 			padding-bottom: 1rem;
 			color: #b03b6f;
+		}
+
+				/* Estilo do botão de upload */
+		.btn-upload {
+			background-color: #ffe0ed;
+			color: #b03b6f;
+			border: 1px dashed #e6a4c5;
+			width: 100%;
+			border-radius: 10px;
+			padding: 0.6rem;
+			font-weight: 500;
+			cursor: pointer;
+			transition: all 0.3s ease;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			gap: 8px;
+		}
+
+		.btn-upload:hover {
+			background-color: #f8d9e6;
+			border-color: #b03b6f;
+		}
+
+		/* Ajuste para pré-visualização */
+		#preview-container {
+			text-align: center;
 		}
 
 		.politica-privacidade {
@@ -575,12 +603,15 @@
     font-size: 1.2rem;
 }
 
-.product-card .btn-outline-primary {
+.product-card .add-to-cart {
+	border-radius: 5px;
+	background-color: #ffffff;
     border-color: #d63384;
     color: #d63384;
+	transition: all 0.3s;
 }
 
-.product-card .btn-outline-primary:hover {
+.product-card .add-to-cart:hover {
     background-color: #d63384;
     color: white;
 }

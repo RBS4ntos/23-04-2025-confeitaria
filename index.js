@@ -22,35 +22,50 @@ window.onload = function () {
     });
 
     document.getElementById('frmLogin').addEventListener('submit', async (e) => {
-        e.preventDefault();
+    e.preventDefault();
+    
+    const login = document.getElementById('txtLogin').value;
+    const senha = document.getElementById('txtSenha').value;
+    const notificacao = document.getElementById('notificacao');
+    const tipo = 'login';
+
+    try {
+        const response = await fetch('/api/mysql', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ login, senha, tipo })
+        });
+
+        const result = await response.json();
+        console.log(result); // Adicione isso para debug
         
-        const login = document.getElementById('txtLogin').value;
-        const senha = document.getElementById('txtSenha').value;
-        const notificacao = document.getElementById('notificacao');
-        const tipo = 'login';
+        notificacao.innerText = result.message;
 
-        try {
-            const response = await fetch('/api/mysql', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ login, senha, tipo })
-            });
-
-            const result = await response.json();
-            console.log(result.message);
-            notificacao.innerText = result.message;
-
-            // Se o login for bem-sucedido (você pode ajustar a condição de sucesso como quiser)
-            if (result.success || result.message.toLowerCase().includes("sucesso")) {
-                localStorage.setItem('logado', 'true');
-                bootstrap.Modal.getInstance(loginModalEl).hide();
+        // Verificação corrigida
+        if (result.success) {
+            localStorage.setItem('logado', 'true');
+            localStorage.setItem('usuario', JSON.stringify({
+                nome: result.usuario.nome, // Usando result.usuario em vez de rows
+                login: result.usuario.login,
+                foto: result.usuario.foto || null // Usando o valor retornado pelo servidor
+            }));
+            
+            // Fecha o modal de login
+            if (bootstrap && bootstrap.Modal) {
+                const loginModal = bootstrap.Modal.getInstance(loginModalEl);
+                if (loginModal) loginModal.hide();
             }
-
-        } catch (error) {
-            console.error('Erro ao enviar login:', error);
-            notificacao.innerText = 'Erro na conexão com o servidor.';
+            
+            // Recarrega a página ou redireciona
+            window.location.reload();
         }
-    });
+
+    } catch (error) {
+        console.error('Erro ao enviar login:', error);
+        notificacao.innerText = 'Erro na conexão com o servidor.';
+        notificacao.style.color = 'red';
+    }
+});
 
     document.getElementById('frmCadastro').addEventListener('submit', async (e) => {
         e.preventDefault();
@@ -58,34 +73,56 @@ window.onload = function () {
         const login = document.getElementById('cadLogin').value;
         const senha = document.getElementById('cadSenha').value;
         const confirma = document.getElementById('cadConfirmaSenha').value;
+        const fotoInput = document.getElementById('cadFoto');
         const notificacaoCadastro = document.getElementById('notificacaoCadastro');
         const tipo = 'cadastro';
-    
 
+        // Validação de senha
         if (senha !== confirma) {
             notificacaoCadastro.innerText = 'As senhas não coincidem.';
+            notificacaoCadastro.style.color = '#dc3545';
             return;
-        } else{
+        }
 
+        // Cria FormData para enviar a imagem
+        const formData = new FormData();
+        formData.append('nome', nome);
+        formData.append('login', login);
+        formData.append('senha', senha);
+        formData.append('tipo', tipo);
+        
+        // Adiciona a imagem se existir
+        if (fotoInput.files[0]) {
+            formData.append('foto', fotoInput.files[0]);
+        }
+
+        try {
             const response = await fetch('/api/mysql', {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ nome, login, senha, tipo })
+                body: formData // Não usar headers Content-Type para FormData!
             });
-        
-            const result = await response.json();
-            console.log(result.message);
-            notificacaoCadastro.innerText = result.message;
 
-            if (result.success || result.message.toLowerCase().includes("sucesso")) {
+            const result = await response.json();
+            
+            if (result.success) {
                 notificacaoCadastro.innerText = result.message;
+                notificacaoCadastro.style.color = '#28a745';
+                
+                // Limpa o formulário após 2 segundos
+                setTimeout(() => {
+                    document.getElementById('frmCadastro').reset();
+                    document.getElementById('preview-container').style.display = 'none';
+                    notificacaoCadastro.innerText = '';
+                }, 2000);
+            } else {
+                throw new Error(result.error || 'Erro no cadastro');
             }
+        } catch (error) {
+            notificacaoCadastro.innerText = error.message;
+            notificacaoCadastro.style.color = '#dc3545';
+            console.error('Erro:', error);
         }
     });
-
-
-    
-    
 
 
 /**
@@ -177,3 +214,40 @@ function abrirHistoria() {
     var historiaModal = new bootstrap.Modal(document.getElementById('historiaModal'));
     historiaModal.show();
   }
+
+  function previewImage(input) {
+    const previewContainer = document.getElementById('preview-container');
+    const previewImage = document.getElementById('preview-image');
+    
+    if (input.files && input.files[0]) {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            previewImage.src = e.target.result;
+            previewContainer.style.display = 'block';
+        };
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
+document.querySelectorAll('.add-to-cart').forEach(btn => {
+    btn.addEventListener('click', () => {
+        const produto = {
+            id: btn.dataset.id,
+            nome: btn.dataset.nome,
+            preco: parseFloat(btn.dataset.preco),
+            imagem: btn.dataset.imagem
+        };
+        
+        // Verifica se o carrinho já está carregado
+        if (window.Carrinho) {
+            window.Carrinho.adicionarItem(produto);
+        } else {
+            // Se não estiver, salva no localStorage e redireciona
+            const carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
+            carrinho.push({...produto, quantidade: 1});
+            localStorage.setItem('carrinho', JSON.stringify(carrinho));
+        }
+        
+        alert('Produto adicionado ao carrinho!');
+    });
+});

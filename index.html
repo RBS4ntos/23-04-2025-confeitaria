@@ -30,9 +30,6 @@
 			<div class="header-main">
 				<div class="container">
 					<div class="header-content">
-						<button class="menu-button" onclick="abrirMenu()">
-							<i class="fa-solid fa-bars"></i>
-						</button>
 						
 						<div class="logo">
 							<i class="fa-solid fa-cake-candles"></i>
@@ -48,9 +45,9 @@
 						</nav>
 						
 						<div class="header-actions">
-							<a href="#" class="cart-icon">
+							<a href="./carrinho.html" class="cart-icon">
 								<i class="fa-solid fa-cart-shopping"></i>
-								<span class="cart-count">0</span>
+								<span id="cart-count" class="cart-count" style="display: none;">0</span>
 							</a>
 						</div>
 					</div>
@@ -109,9 +106,14 @@
                     <p class="card-text">Massa aveludada com cacau, recheio de cream cheese e cobertura suave.</p>
                     <div class="d-flex justify-content-between align-items-center">
                         <span class="price">R$ 89,90</span>
-                        <button class="btn btn-outline-primary btn-sm">
-                            <i class="fas fa-cart-plus"></i> Adicionar
-                        </button>
+						<button class="add-to-cart" 
+							data-id="1" 
+							data-nome="Bolo de RedVelvet" 
+							data-preco="89.90" 
+							data-imagem="./red_velvet.png">
+							<i class="fas fa-cart-plus"></i>
+							Adicionar ao Carrinho
+						</button>
                     </div>
                 </div>
             </div>
@@ -126,9 +128,14 @@
                     <p class="card-text">Massa aveludada com cobertura de cream cheese e raspas de chocolate.</p>
                     <div class="d-flex justify-content-between align-items-center">
                         <span class="price">R$ 12,90</span>
-                        <button class="btn btn-outline-primary btn-sm">
-                            <i class="fas fa-cart-plus"></i> Adicionar
-                        </button>
+						<button class="add-to-cart" 
+							data-id="1" 
+							data-nome="Cupcake Red Velvet" 
+							data-preco="12.90" 
+							data-imagem="./redvelvet-cupcake.jpg">
+							<i class="fas fa-cart-plus"></i>
+							Adicionar ao Carrinho
+						</button>
                     </div>
                 </div>
             </div>
@@ -143,9 +150,14 @@
                     <p class="card-text">Combo contendo 12 unidades - Tradicional, ninho, café e beijinho.</p>
                     <div class="d-flex justify-content-between align-items-center">
                         <span class="price">R$ 45,00</span>
-                        <button class="btn btn-outline-primary btn-sm">
-                            <i class="fas fa-cart-plus"></i> Adicionar
-                        </button>
+						<button class="add-to-cart" 
+							data-id="1" 
+							data-nome="Caixa de Brigadeiros" 
+							data-preco="45.00" 
+							data-imagem="./brigadeiros.webp">
+							<i class="fas fa-cart-plus"></i>
+							Adicionar ao Carrinho
+						</button>
                     </div>
                 </div>
             </div>
@@ -193,11 +205,6 @@
 				<div class="modal-body p-0">
 					<div class="container-custom">
 						<div class="content">
-							<div class="left-panel">
-								<img src="./Sonho.png" alt="Logo Sugar Dreams" />
-								<h2>Bem-vindo à Sugar Dreams!</h2>
-								<p>Entre com suas credenciais para acessar um mundo doce e encantador feito especialmente para você. 🍰</p>
-							</div>
 							<div class="right-panel">
 								<h2>Login</h2>
 								<form id="frmLogin">
@@ -256,6 +263,29 @@
                 						<input type="password" class="form-control" id="cadConfirmaSenha" placeholder="Confirmar senha" required />
                 						<i class="bi bi-lock-fill"></i>
               						</div>
+									<div class="input-group">
+										<input 
+											type="file" 
+											id="cadFoto" 
+											name="foto" 
+											accept="image/*" 
+											style="display: none;" 
+											onchange="previewImage(this)"
+										>
+										<div id="preview-container" style="display: none; margin-top: 10px;">
+    										<img id="preview-image" src="#" alt="Pré-visualização" style="max-width: 100px; border-radius: 8px;">
+										</div>
+										<button 
+											type="button" 
+											class="btn-upload" 
+											onclick="document.getElementById('cadFoto').click()"
+										>
+											<i class="bi bi-image"></i> Carregar Foto
+										</button>
+										<div id="preview-container" style="display: none; margin-top: 10px;">
+											<img id="preview-image" src="#" alt="Pré-visualização" style="max-width: 100px; border-radius: 8px;">
+										</div>
+									</div>
               						<button type="submit" class="btn btn-primary">
                 						<i class="bi bi-person-plus"></i> Cadastrar
               						</button>

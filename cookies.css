@@ -1,4 +1,5 @@
 .politica-privacidade {
+    z-index: 1500;
     position: fixed;
     right: 30px;
     bottom: 300px;
@@ -14,7 +15,7 @@
 }
 
 .cookieConsentContainer {
-    z-index: 999;
+    z-index: 1500;
     width: 350px;
     min-height: 20px;
     box-sizing: border-box;
@@ -28,6 +29,7 @@
 }
 
 .cookieConsentContainer .cookieTitle a {
+    z-index: 1500;
     font-family: OpenSans, arial, sans-serif;
     color: #fff;
     font-size: 22px;
@@ -36,6 +38,7 @@
 }
 
 .cookieConsentContainer .cookieDesc p {
+    z-index: 1500;
     margin: 0;
     padding: 0;
     font-family: OpenSans, arial, sans-serif;
@@ -47,12 +50,14 @@
 }
 
 .cookieConsentContainer .cookieDesc a {
+    z-index: 1500;
     font-family: OpenSans, arial, sans-serif;
     color: #fff;
     text-decoration: underline;
 }
 
 .cookieConsentContainer .cookieButton a {
+    z-index: 1500;
     display: inline-block;
     font-family: OpenSans, arial, sans-serif;
     color: #fff;
@@ -67,6 +72,7 @@
 }
 
 .cookieConsentContainer .cookieButton a:hover {
+    z-index: 1500;
     cursor: pointer;
     background: #3e9b67;
 }
@@ -78,27 +84,3 @@
         width: 100% !important;
     }
 }
-
-.historia-modal .modal-content {
-	border-radius: 20px;
-	overflow: hidden;
-	border: none;
-  }
-
-  .historia-modal .modal-header {
-	background: linear-gradient(135deg, var(--rosa-escuro), var(--rosa-vibrante));
-	color: white;
-	border-bottom: none;
-	padding: 20px;
-  }
-
-  .historia-modal .modal-body {
-	padding: 30px;
-	background-color: var(--rosa-claro);
-  }
-
-  .historia-modal .modal-footer {
-	background-color: var(--rosa-medio);
-	border-top: none;
-	justify-content: center;
-  }

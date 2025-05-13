@@ -44,9 +44,9 @@
                     </nav>
                     
                     <div class="header-actions">
-                        <a href="#" class="cart-icon">
+                        <a href="./carrinho.html" class="cart-icon">
                             <i class="fa-solid fa-cart-shopping"></i>
-                            <span class="cart-count">0</span>
+                            <span id="cart-count" class="cart-count" style="display: none;">0</span>
                         </a>
                     </div>
                 </div>
@@ -111,9 +111,14 @@
                     <p class="product-description">Massa aveludada com cacau, recheio de cream cheese e cobertura suave</p>
                     <div class="product-footer">
                         <span class="price">R$ 89,90</span>
-                        <button class="btn-add-to-cart">
-                            <i class="fas fa-cart-plus"></i> Adicionar
-                        </button>
+						<button class="add-to-cart" 
+							data-id="1" 
+							data-nome="Bolo Red Velvet" 
+							data-preco="89.90" 
+							data-imagem="./red_velvet.png">
+							<i class="fas fa-cart-plus"></i>
+							Carrinho
+						</button>
                     </div>
                 </div>
             </div>
@@ -126,9 +131,14 @@
                     <p class="product-description">Chocolate 70% cacau com recheio de brigadeiro gourmet e ganache</p>
                     <div class="product-footer">
                         <span class="price">R$ 79,90</span>
-                        <button class="btn-add-to-cart">
-                            <i class="fas fa-cart-plus"></i> Adicionar
-                        </button>
+						<button class="add-to-cart" 
+							data-id="1" 
+							data-nome="Caixa de Brigadeiros" 
+							data-preco="79.90" 
+							data-imagem="./chocolate-bolo.jpg">
+							<i class="fas fa-cart-plus"></i>
+							Carrinho
+						</button>
                     </div>
                 </div>
             </div>
@@ -141,9 +151,14 @@
                     <p class="product-description">Massa branca com recheio de creme de baunilha e morangos frescos</p>
                     <div class="product-footer">
                         <span class="price">R$ 85,00</span>
-                        <button class="btn-add-to-cart">
-                            <i class="fas fa-cart-plus"></i> Adicionar
-                        </button>
+						<button class="add-to-cart" 
+							data-id="1" 
+							data-nome="Bolo de Morango" 
+							data-preco="85.00" 
+							data-imagem="./morango-bolo.jpg">
+							<i class="fas fa-cart-plus"></i>
+							Carrinho
+						</button>
                     </div>
                 </div>
             </div>
@@ -156,9 +171,14 @@
                     <p class="product-description">Massa úmida de cenoura com recheio de brigadeiro e cobertura de chocolate</p>
                     <div class="product-footer">
                         <span class="price">R$ 74,90</span>
-                        <button class="btn-add-to-cart">
-                            <i class="fas fa-cart-plus"></i> Adicionar
-                        </button>
+						<button class="add-to-cart" 
+							data-id="1" 
+							data-nome="Bolo de Cenoura" 
+							data-preco="74.90" 
+							data-imagem="./bolo-de-cenoura-com-ganache1.webp">
+							<i class="fas fa-cart-plus"></i>
+							Carrinho
+						</button>
                     </div>
                 </div>
             </div>
@@ -184,9 +204,14 @@
                     <p class="product-description">Massa aveludada com cobertura de cream cheese e raspas de chocolate</p>
                     <div class="product-footer">
                         <span class="price">R$ 12,90</span>
-                        <button class="btn-add-to-cart">
-                            <i class="fas fa-cart-plus"></i> Adicionar
-                        </button>
+						<button class="add-to-cart" 
+							data-id="1" 
+							data-nome="Cupcake Red Velvet" 
+							data-preco="12.90" 
+							data-imagem="./redvelvet-cupcake.jpg">
+							<i class="fas fa-cart-plus"></i>
+							Carrinho
+						</button>
                     </div>
                 </div>
             </div>
@@ -199,9 +224,14 @@
                     <p class="product-description">Massa fofinha de baunilha com buttercream e confeitos coloridos</p>
                     <div class="product-footer">
                         <span class="price">R$ 10,90</span>
-                        <button class="btn-add-to-cart">
-                            <i class="fas fa-cart-plus"></i> Adicionar
-                        </button>
+						<button class="add-to-cart" 
+							data-id="1" 
+							data-nome="Cupcake de Baunilha" 
+							data-preco="10.90" 
+							data-imagem="./baunilha-cupcake.jpg">
+							<i class="fas fa-cart-plus"></i>
+							Carrinho
+						</button>
                     </div>
                 </div>
             </div>
@@ -214,9 +244,14 @@
                     <p class="product-description">Massa de chocolate com recheio de brigadeiro e cobertura de ganache</p>
                     <div class="product-footer">
                         <span class="price">R$ 11,90</span>
-                        <button class="btn-add-to-cart">
-                            <i class="fas fa-cart-plus"></i> Adicionar
-                        </button>
+						<button class="add-to-cart" 
+							data-id="1" 
+							data-nome="Cupcake de Chocolate" 
+							data-preco="11.90" 
+							data-imagem="./chocolate-cupcake.webp">
+							<i class="fas fa-cart-plus"></i>
+							Carrinho
+						</button>
                     </div>
                 </div>
             </div>
@@ -229,9 +264,14 @@
                     <p class="product-description">Massa de baunilha com pedaços de morango e cobertura de buttercream rosê</p>
                     <div class="product-footer">
                         <span class="price">R$ 13,90</span>
-                        <button class="btn-add-to-cart">
-                            <i class="fas fa-cart-plus"></i> Adicionar
-                        </button>
+						<button class="add-to-cart" 
+							data-id="1" 
+							data-nome="Cupcake de Morango" 
+							data-preco="13.90" 
+							data-imagem="./morango-cupcake.webp">
+							<i class="fas fa-cart-plus"></i>
+							Carrinho
+						</button>
                     </div>
                 </div>
             </div>
@@ -257,9 +297,14 @@
                     <p class="product-description">Combo contendo 12 unidades - Tradicional, ninho, café e beijinho</p>
                     <div class="product-footer">
                         <span class="price">R$ 45,00</span>
-                        <button class="btn-add-to-cart">
-                            <i class="fas fa-cart-plus"></i> Adicionar
-                        </button>
+						<button class="add-to-cart" 
+							data-id="1" 
+							data-nome="Caixa de Brigadeiros" 
+							data-preco="45.00" 
+							data-imagem="./brigadeiros.webp">
+							<i class="fas fa-cart-plus"></i>
+							Carrinho
+						</button>
                     </div>
                 </div>
             </div>
@@ -272,9 +317,14 @@
                     <p class="product-description">Doce tradicional feito com leite em pó, chocolate e coco ralado</p>
                     <div class="product-footer">
                         <span class="price">R$ 3,50/un</span>
-                        <button class="btn-add-to-cart">
-                            <i class="fas fa-cart-plus"></i> Adicionar
-                        </button>
+						<button class="add-to-cart" 
+							data-id="1" 
+							data-nome="Bichos de Pé" 
+							data-preco="3.50" 
+							data-imagem="./bicho-de-pé.jpg">
+							<i class="fas fa-cart-plus"></i>
+							Carrinho
+						</button>
                     </div>
                 </div>
             </div>
@@ -287,9 +337,14 @@
                     <p class="product-description">Feito com leite ninho e leite condensado, coberto com chocolate branco</p>
                     <div class="product-footer">
                         <span class="price">R$ 4,00/un</span>
-                        <button class="btn-add-to-cart">
-                            <i class="fas fa-cart-plus"></i> Adicionar
-                        </button>
+						<button class="add-to-cart" 
+							data-id="1" 
+							data-nome="Brigadeiro de Ninho" 
+							data-preco="4.00" 
+							data-imagem="./doce-de-leite-ninho.jpg">
+							<i class="fas fa-cart-plus"></i>
+							Carrinho
+						</button>
                     </div>
                 </div>
             </div>
@@ -302,9 +357,14 @@
                     <p class="product-description">Chocolate 70% cacau com toque de sal marinho e cobertura crocante</p>
                     <div class="product-footer">
                         <span class="price">R$ 4,50/un</span>
-                        <button class="btn-add-to-cart">
-                            <i class="fas fa-cart-plus"></i> Adicionar
-                        </button>
+						<button class="add-to-cart" 
+							data-id="1" 
+							data-nome="Brigadeiro Gourmet" 
+							data-preco="4.50" 
+							data-imagem="./brigadeiro.jpg">
+							<i class="fas fa-cart-plus"></i>
+							Carrinho
+						</button>
                     </div>
                 </div>
             </div>
@@ -330,9 +390,14 @@
                     <p class="product-description">Chocolate ao leite com recheio de brigadeiro de café (250g)</p>
                     <div class="product-footer">
                         <span class="price">R$ 59,90</span>
-                        <button class="btn-add-to-cart">
-                            <i class="fas fa-cart-plus"></i> Adicionar
-                        </button>
+						<button class="add-to-cart" 
+							data-id="1" 
+							data-nome="Ovo de Café" 
+							data-preco="59.90" 
+							data-imagem="./café-ovo-de-pascoa.jpeg">
+							<i class="fas fa-cart-plus"></i>
+							Carrinho
+						</button>
                     </div>
                 </div>
             </div>
@@ -346,9 +411,14 @@
                     <p class="product-description">Chocolate meio amargo com recheio cremoso de avelã (300g)</p>
                     <div class="product-footer">
                         <span class="price">R$ 69,90</span>
-                        <button class="btn-add-to-cart">
-                            <i class="fas fa-cart-plus"></i> Adicionar
-                        </button>
+						<button class="add-to-cart" 
+							data-id="1" 
+							data-nome="Ovo Trufado" 
+							data-preco="69.90" 
+							data-imagem="./ovotrufado.webp">
+							<i class="fas fa-cart-plus"></i>
+							Carrinho
+						</button>
                     </div>
                 </div>
             </div>
@@ -362,9 +432,14 @@
                     <p class="product-description">4 ovos pequenos (100g cada) - sabores variados</p>
                     <div class="product-footer">
                         <span class="price">R$ 75,00</span>
-                        <button class="btn-add-to-cart">
-                            <i class="fas fa-cart-plus"></i> Adicionar
-                        </button>
+						<button class="add-to-cart" 
+							data-id="1" 
+							data-nome="Kit Ovos Mini" 
+							data-preco="75.00" 
+							data-imagem="./ovosimg.jpg">
+							<i class="fas fa-cart-plus"></i>
+							Carrinho
+						</button>
                     </div>
                 </div>
             </div>
@@ -378,9 +453,14 @@
                     <p class="product-description">Chocolate branco com recheio de creme de morango (250g)</p>
                     <div class="product-footer">
                         <span class="price">R$ 64,90</span>
-                        <button class="btn-add-to-cart">
-                            <i class="fas fa-cart-plus"></i> Adicionar
-                        </button>
+						<button class="add-to-cart" 
+							data-id="1" 
+							data-nome="Ovo de Morango" 
+							data-preco="64.90" 
+							data-imagem="./ovodemorango.jpg">
+							<i class="fas fa-cart-plus"></i>
+							Carrinho
+						</button>
                     </div>
                 </div>
             </div>
