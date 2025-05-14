@@ -211,26 +211,27 @@ body.menu-aberto {
     gap: 15px;
 }
 
-.cart-icon {
+  .cart-icon {
     position: relative;
-    color: #5A3D2B;
-    font-size: 1.3rem;
+    color: #b03b6f;
+    font-size: 1.5rem;
+    text-decoration: none;
 }
 
 .cart-count {
     position: absolute;
-    top: -8px;
-    right: -8px;
-    background: #D63384;
+    top: -10px;
+    right: -10px;
+    background: #b03b6f;
     color: white;
     border-radius: 50%;
-    width: 20px;
-    height: 20px;
+    width: 22px;
+    height: 22px;
+    font-size: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 0.7rem;
-    font-weight: bold;
+    display: none; /* Inicialmente escondido */
 }
 
 /* Responsividade */

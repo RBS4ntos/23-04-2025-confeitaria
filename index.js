@@ -1,5 +1,5 @@
 window.onload = function () {
-    const loginModalEl = document.getElementById('welcomeModal');
+    const loginModalEl = document.getElementById('loginModal');
     const loginModal = new bootstrap.Modal(loginModalEl);
 
     const cadastroModalEl = document.getElementById('cadastroModal');
@@ -24,9 +24,9 @@ window.onload = function () {
     document.getElementById('frmLogin').addEventListener('submit', async (e) => {
     e.preventDefault();
     
-    const login = document.getElementById('txtLogin').value;
-    const senha = document.getElementById('txtSenha').value;
-    const notificacao = document.getElementById('notificacao');
+    const login = document.getElementById('logLogin').value;
+    const senha = document.getElementById('logSenha').value;
+    const notificacao = document.getElementById('notificacaoLogin');
     const tipo = 'login';
 
     try {
@@ -67,13 +67,33 @@ window.onload = function () {
     }
 });
 
+document.getElementById('fotoInput').addEventListener('change', function(e) {
+  const preview = document.getElementById('previewFoto');
+  const container = document.getElementById('previewContainer');
+  const label = document.getElementById('nomeArquivo');
+  
+  if (this.files && this.files[0]) {
+    label.textContent = this.files[0].name;
+    container.style.display = 'block';
+    
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      preview.src = e.target.result;
+    }
+    reader.readAsDataURL(this.files[0]);
+  } else {
+    container.style.display = 'none';
+    label.textContent = 'Nenhuma foto selecionada';
+  }
+}); 
+
     document.getElementById('frmCadastro').addEventListener('submit', async (e) => {
         e.preventDefault();
         const nome = document.getElementById('cadNome').value;
         const login = document.getElementById('cadLogin').value;
         const senha = document.getElementById('cadSenha').value;
         const confirma = document.getElementById('cadConfirmaSenha').value;
-        const fotoInput = document.getElementById('cadFoto');
+        const foto = document.getElementById('nomeArquivo');
         const notificacaoCadastro = document.getElementById('notificacaoCadastro');
         const tipo = 'cadastro';
 
@@ -89,12 +109,10 @@ window.onload = function () {
         formData.append('nome', nome);
         formData.append('login', login);
         formData.append('senha', senha);
+        formData.append('foto', foto)
         formData.append('tipo', tipo);
         
-        // Adiciona a imagem se existir
-        if (fotoInput.files[0]) {
-            formData.append('foto', fotoInput.files[0]);
-        }
+
 
         try {
             const response = await fetch('/api/mysql', {
@@ -215,39 +233,42 @@ function abrirHistoria() {
     historiaModal.show();
   }
 
-  function previewImage(input) {
-    const previewContainer = document.getElementById('preview-container');
-    const previewImage = document.getElementById('preview-image');
-    
-    if (input.files && input.files[0]) {
-        const reader = new FileReader();
-        reader.onload = (e) => {
-            previewImage.src = e.target.result;
-            previewContainer.style.display = 'block';
-        };
-        reader.readAsDataURL(input.files[0]);
-    }
-}
+
 
 document.querySelectorAll('.add-to-cart').forEach(btn => {
     btn.addEventListener('click', () => {
-        const produto = {
-            id: btn.dataset.id,
-            nome: btn.dataset.nome,
-            preco: parseFloat(btn.dataset.preco),
-            imagem: btn.dataset.imagem
-        };
-        
-        // Verifica se o carrinho já está carregado
-        if (window.Carrinho) {
-            window.Carrinho.adicionarItem(produto);
+            if (localStorage.getItem('logado') === 'true') {
+            const produto = {
+                id: btn.dataset.id,
+                nome: btn.dataset.nome,
+                preco: parseFloat(btn.dataset.preco),
+                imagem: btn.dataset.imagem
+            };
+            
+            // Verifica se o carrinho já está carregado
+            if (window.Carrinho) {
+                window.Carrinho.adicionarItem(produto);
+            } else {
+                // Se não estiver, salva no localStorage e redireciona
+                const carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
+                carrinho.push({...produto, quantidade: 1});
+                localStorage.setItem('carrinho', JSON.stringify(carrinho));
+            }
+            
+            alert('Produto adicionado ao carrinho!');
         } else {
-            // Se não estiver, salva no localStorage e redireciona
-            const carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
-            carrinho.push({...produto, quantidade: 1});
-            localStorage.setItem('carrinho', JSON.stringify(carrinho));
+            alert('Você está deslogado!');
         }
-        
-        alert('Produto adicionado ao carrinho!');
     });
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    const carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
+    const totalItens = carrinho.reduce((total, item) => total + item.quantidade, 0);
+    const contador = document.getElementById('cart-count');
+    
+    if (contador) {
+        contador.textContent = totalItens;
+        contador.style.display = totalItens > 0 ? 'flex' : 'none';
+    }
 });

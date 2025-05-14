@@ -45,6 +45,7 @@ class Carrinho {
             cartItemsList.appendChild(cartItem);
         });
         
+        
         this.atualizarTotal();
         this.adicionarEventos();
     }
@@ -122,11 +123,16 @@ class Carrinho {
     }
 
     removerItem(id) {
-        // Converta o id para o mesmo tipo que está armazenado (número ou string)
-        id = typeof this.itens[0].id === 'number' ? Number(id) : id;
+        console.log('Removendo item com ID:', id, 'Tipo:', typeof id);
+        console.log('Itens antes:', this.itens);
         
-        // Filtra mantendo apenas os itens com IDs diferentes
-        this.itens = this.itens.filter(item => item.id !== id);
+        id = typeof this.itens[0].id === 'number' ? Number(id) : id;
+        this.itens = this.itens.filter(item => {
+            console.log('Comparando:', item.id, 'com', id, 'Resultado:', item.id !== id);
+            return item.id !== id;
+        });
+        
+        console.log('Itens depois:', this.itens);
         this.salvarCarrinho();
     }
 
@@ -157,12 +163,22 @@ class Carrinho {
     }
 
     atualizarContador() {
-        const totalItens = this.itens.reduce((sum, item) => sum + item.quantidade, 0);
+        // Calcula o total de itens (soma as quantidades)
+        const totalItens = this.itens.reduce((total, item) => total + item.quantidade, 0);
         const contador = document.getElementById('cart-count');
         
         if (contador) {
             contador.textContent = totalItens;
-            contador.style.display = totalItens > 0 ? 'block' : 'none';
+            // Mostra apenas se tiver itens
+            contador.style.display = totalItens > 0 ? 'flex' : 'none';
+            
+            // Adiciona animação quando muda
+            if (totalItens > 0) {
+                contador.classList.add('animate-bounce');
+                setTimeout(() => {
+                    contador.classList.remove('animate-bounce');
+                }, 500);
+            }
         }
     }
 
@@ -181,7 +197,7 @@ class Carrinho {
         if (localStorage.getItem('logado') !== 'true') {
             alert('Por favor, faça login para finalizar a compra!');
             // Aqui você pode redirecionar para a página de login
-            window.location.href = 'login.html';
+            window.location.href = './index.html';
             return;
         }
         

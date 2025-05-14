@@ -47,7 +47,7 @@
 						<div class="header-actions">
 							<a href="./carrinho.html" class="cart-icon">
 								<i class="fa-solid fa-cart-shopping"></i>
-								<span id="cart-count" class="cart-count" style="display: none;">0</span>
+								<span id="cart-count" class="cart-count" >0</span>
 							</a>
 						</div>
 					</div>
@@ -129,7 +129,7 @@
                     <div class="d-flex justify-content-between align-items-center">
                         <span class="price">R$ 12,90</span>
 						<button class="add-to-cart" 
-							data-id="1" 
+							data-id="5" 
 							data-nome="Cupcake Red Velvet" 
 							data-preco="12.90" 
 							data-imagem="./redvelvet-cupcake.jpg">
@@ -151,7 +151,7 @@
                     <div class="d-flex justify-content-between align-items-center">
                         <span class="price">R$ 45,00</span>
 						<button class="add-to-cart" 
-							data-id="1" 
+							data-id="9" 
 							data-nome="Caixa de Brigadeiros" 
 							data-preco="45.00" 
 							data-imagem="./brigadeiros.webp">
@@ -199,108 +199,145 @@
 			
 
 <!-- MODAL COM O FORMULÁRIO DE LOGIN -->
-	<div class="modal fade" id="welcomeModal" tabindex="-1" aria-labelledby="welcomeModalLabel" aria-hidden="true">
-		<div class="modal-dialog modal-xl modal-dialog-centered">
-			<div class="modal-content p-0" style="border-radius: 20px;">
-				<div class="modal-body p-0">
-					<div class="container-custom">
-						<div class="content">
-							<div class="right-panel">
-								<h2>Login</h2>
-								<form id="frmLogin">
-									<div class="input-group">
-										<input type="text" class="form-control" id="txtLogin" placeholder="Usuário" required />
-										<i class="bi bi-person-badge"></i>
-									</div>
-									<div class="input-group">
-										<input type="password" class="form-control" id="txtSenha" placeholder="Senha" required />
-										<i class="bi bi-lock"></i>
-									</div>
-									<button type="submit" class="btn btn-primary">
-										<i class="bi bi-box-arrow-in-right"></i> Entrar
-									</button>
-									<a href="#" id="abrirCadastro"><i class="bi bi-box-arrow-in-left"></i> Não tem uma conta? Crie aqui</a>
-									<div>
-										<h6 id="notificacao"></h6>
-									</div>
-								</form>
-							</div>
-						</div>
-					</div>
-				</div>	
-			</div>
-		</div>
+	<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+  		<div class="modal-dialog modal-dialog-centered">
+    		<div class="modal-content" style="border-radius: 20px; overflow: hidden; border: none;">
+      <!-- Cabeçalho do Modal -->
+      			<div class="modal-header" style="background-color: #b03b6f; color: white; border-bottom: none;">
+        			<h5 class="modal-title"><i class="fas fa-sign-in-alt"></i> Login</h5>
+        			<button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      			</div>
+      
+      <!-- Corpo do Modal -->
+      			<div class="modal-body" style="padding: 2rem;">
+       				 <form id="frmLogin">
+          <!-- Campo Login -->
+          				<div class="input-group mb-3">
+            				<span class="input-group-text" style="background-color: #fff0f6; border-color: #e6a4c5;">
+              					<i class="fas fa-user-circle" style="color: #b03b6f;"></i>
+            				</span>
+            				<input type="text" id="logLogin" name="logLogin" class="form-control" 
+                   			placeholder="Digite seu login" required
+                   			style="background-color: #fff0f6; border-color: #e6a4c5;">
+          				</div>
+          
+          <!-- Campo Senha -->
+          				<div class="input-group mb-3">
+            				<span class="input-group-text" style="background-color: #fff0f6; border-color: #e6a4c5;">
+           					   <i class="fas fa-lock" style="color: #b03b6f;"></i>
+           				 	</span>
+            				<input type="password" id="logSenha" name="logSenha" class="form-control" 
+                   			placeholder="Digite sua senha" required
+                   			style="background-color: #fff0f6; border-color: #e6a4c5;">
+          				</div>
+          
+          <!-- Botão de Login -->
+          				<div class="d-grid">
+            				<button type="submit" class="btn" 
+                    		style="background-color: #b03b6f; color: white; border-radius: 30px; padding: 10px;">
+              					<i class="fas fa-sign-in-alt"></i> Entrar
+            				</button>
+          				</div>
+        			</form>
+        
+        <!-- Link para Cadastro -->
+        			<div class="text-center mt-3">
+          				<p style="color: #b47894;">Não tem uma conta? 
+            				<a href="#" style="color: #b03b6f; text-decoration: none;" id="abrirCadastro">
+              					<i class="fas fa-user-plus"></i> Cadastre-se
+            				</a>
+          				</p>
+        			</div>
+        
+        <!-- Notificação -->
+        			<h6 id="notificacaoLogin" class="text-center mt-3" style="color: #b03b6f;"></h6>
+      			</div>
+    		</div>
+  		</div>
 	</div>
 
 <!-- MODAL DE CADASTRO -->
 	<div class="modal fade" id="cadastroModal" tabindex="-1" aria-labelledby="cadastroModalLabel" aria-hidden="true">
-		<div class="modal-dialog modal-xl modal-dialog-centered">
-  			<div class="modal-content p-0" style="border-radius: 20px;">
-    			<div class="modal-body p-0">
-      				<div class="container-custom">
-        				<div class="content">
-          					<div class="left-panel">
-            					<img src="./Sonho.png" alt="Logo Sugar Dreams" />
-            					<h2>Crie sua conta!</h2>
-            					<p>Faça parte do nosso mundo açucarado e aproveite todos os benefícios. 🍩</p>
-          					</div>
-          					<div class="right-panel">
-            					<h2>Cadastro</h2>
-            					<form id="frmCadastro">
-              						<div class="input-group">
-                						<input type="text" class="form-control" id="cadNome" placeholder="Nome completo" required />
-                						<i class="bi bi-person"></i>
-              						</div>
-              						<div class="input-group">
-                						<input type="text" class="form-control" id="cadLogin" placeholder="Usuário" required />
-                						<i class="bi bi-person-badge"></i>
-              						</div>
-              						<div class="input-group">
-                						<input type="password" class="form-control" id="cadSenha" placeholder="Senha" required />
-                						<i class="bi bi-lock"></i>
-            					 	</div>
-              						<div class="input-group">
-                						<input type="password" class="form-control" id="cadConfirmaSenha" placeholder="Confirmar senha" required />
-                						<i class="bi bi-lock-fill"></i>
-              						</div>
-									<div class="input-group">
-										<input 
-											type="file" 
-											id="cadFoto" 
-											name="foto" 
-											accept="image/*" 
-											style="display: none;" 
-											onchange="previewImage(this)"
-										>
-										<div id="preview-container" style="display: none; margin-top: 10px;">
-    										<img id="preview-image" src="#" alt="Pré-visualização" style="max-width: 100px; border-radius: 8px;">
-										</div>
-										<button 
-											type="button" 
-											class="btn-upload" 
-											onclick="document.getElementById('cadFoto').click()"
-										>
-											<i class="bi bi-image"></i> Carregar Foto
-										</button>
-										<div id="preview-container" style="display: none; margin-top: 10px;">
-											<img id="preview-image" src="#" alt="Pré-visualização" style="max-width: 100px; border-radius: 8px;">
-										</div>
-									</div>
-              						<button type="submit" class="btn btn-primary">
-                						<i class="bi bi-person-plus"></i> Cadastrar
-              						</button>
-             						<a href="#" id="voltarLogin">
-                						<i class="bi bi-arrow-left-circle"></i> Já tem uma conta? Clique aqui
-              						</a>
-              						<div>
-                						<h6 id="notificacaoCadastro"></h6>
-              						</div>
-            					</form>
-          					</div>
-        				</div>
-      				</div>
-    			</div>
-  			</div>
+		<div class="modal-dialog modal-dialog-centered">
+			<div class="modal-content" style="border-radius: 20px; overflow: hidden;">
+				<div class="modal-header" style="background-color: #b03b6f; color: white; border-bottom: none;">
+					<h5 class="modal-title"><i class="fas fa-user-plus"></i> Cadastro</h5>
+					<button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+		
+				<div class="modal-body" style="padding: 2rem;">
+					<form id="frmCadastro" enctype="multipart/form-data">
+			<!-- Campo Nome -->
+						<div class="input-group mb-3">
+							<span class="input-group-text" style="background-color: #fff0f6; border-color: #e6a4c5;">
+								<i class="fas fa-user" style="color: #b03b6f;"></i>
+							</span>
+							<input type="text" id="cadNome" class="form-control" placeholder="Digite seu nome" required 
+							style="background-color: #fff0f6; border-color: #e6a4c5;">
+						</div>
+			
+			<!-- Campo Login -->
+						<div class="input-group mb-3">
+							<span class="input-group-text" style="background-color: #fff0f6; border-color: #e6a4c5;">
+								<i class="fas fa-user-circle" style="color: #b03b6f;"></i>
+							</span>
+							<input type="text" id="cadLogin" class="form-control" placeholder="Digite seu login" required 
+							style="background-color: #fff0f6; border-color: #e6a4c5;">
+						</div>
+			
+			<!-- Campo Senha -->
+						<div class="input-group mb-3">
+							<span class="input-group-text" style="background-color: #fff0f6; border-color: #e6a4c5;">
+								<i class="fas fa-lock" style="color: #b03b6f;"></i>
+							</span>
+							<input type="password" id="cadSenha" class="form-control" placeholder="Digite sua senha" required 
+							style="background-color: #fff0f6; border-color: #e6a4c5;">
+						</div>
+
+			<!-- Campo Confirma Senha -->
+						<div class="input-group mb-3">
+							<span class="input-group-text" style="background-color: #fff0f6; border-color: #e6a4c5;">
+								<i class="fas fa-lock" style="color: #b03b6f;"></i>
+							</span>
+							<input type="password" id="cadConfirmaSenha" class="form-control" placeholder="Digite sua senha novamente" required 
+							style="background-color: #fff0f6; border-color: #e6a4c5;">
+						</div>
+			
+			<!-- Upload de Foto (adicionei como estava no original) -->
+						<div class="input-group mb-3">
+							<input type="file" name="foto" id="fotoInput" accept="image/*" class="d-none">
+							<button type="button" class="btn btn-outline-secondary" 
+							style="border-color: #e6a4c5; color: #b03b6f;"
+							onclick="document.getElementById('fotoInput').click()">
+								<i class="fas fa-camera"></i> Adicionar Foto
+							</button>
+							<span id="nomeArquivo" class="ms-2" style="color: #b47894;">Nenhuma foto selecionada</span>
+						</div>
+						<div id="previewContainer" class="text-center mb-3" style="display: none;">
+							<img id="previewFoto" src="#" alt="Pré-visualização" style="max-width: 100px; border-radius: 8px; border: 2px solid #e6a4c5;">
+						</div>
+			
+			<!-- Botão de Cadastro -->
+						<div class="d-grid">
+							<button type="submit" class="btn" 
+							style="background-color: #b03b6f; color: white; border-radius: 30px; padding: 10px;">
+								<i class="fas fa-check"></i> Cadastrar
+							</button>
+						</div>
+					</form>
+
+					<div class="text-center mt-3">
+						<p style="color: #b47894;">Já tem uma conta? 
+							<a href="#" style="color: #b03b6f; text-decoration: none;" id="voltarLogin">
+								<i class="fas fa-user-plus"></i> Logar
+							</a>
+						</p>
+					</div>
+			
+			<!-- Notificação -->
+					<h6 id="notificacaoCadastro" class="text-center mt-3" style="color: #b03b6f;"></h6>
+				</div>
+			</div>
 		</div>
 	</div>
 

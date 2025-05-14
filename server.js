@@ -48,7 +48,7 @@ const pool = mysql.createPool({
 });
 
 app.post('/api/mysql', upload.single('foto'), async (req, res) => {
-    const { nome, login, senha, tipo } = req.body;
+    const { nome, login, senha, foto, tipo } = req.body;
     const caminhoImagem = req.file?.path; // Caminho da imagem (se existir)
 
     switch (tipo) {
@@ -67,15 +67,15 @@ app.post('/api/mysql', upload.single('foto'), async (req, res) => {
 
                 // Insere no banco (com ou sem imagem)
                 const [rows] = await pool.query(
-                    "INSERT INTO `railway`.`tbl_clientes` (`nome`, `login`, `senha`, `foto`) VALUES (?, ?, ?, ?)",
-                    [nome, login, senha, caminhoImagem ]
+                    "INSERT INTO `railway`.`usuarios` (`nome`, `login`, `senha`, `foto`) VALUES (?, ?, ?, ?)",
+                    [nome, login, senha, foto ]
                 );
 
                 if (rows.affectedRows > 0) {
                     res.json({ 
                         success: true,
                         message: 'Usuário cadastrado com sucesso!',
-                        fotoUrl: caminhoImagem ? `/uploads/${path.basename(caminhoImagem)}`  : null
+                        fotoUrl: foto ? `/uploads/${path.basename(foto)}`  : null
                     });
                 } else {
                     throw new Error('Falha ao inserir no banco de dados.');
@@ -93,7 +93,7 @@ app.post('/api/mysql', upload.single('foto'), async (req, res) => {
         case 'login':
             try {
                 const [rows] = await pool.query(
-                    "SELECT * FROM `railway`.`tbl_clientes` WHERE `login` = ? AND `senha` = ?",
+                    "SELECT * FROM `railway`.`usuarios` WHERE `login` = ? AND `senha` = ?",
                     [login, senha]
                 );
 
