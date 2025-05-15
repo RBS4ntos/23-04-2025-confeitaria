@@ -38,16 +38,15 @@ window.onload = function () {
 
         const result = await response.json();
         console.log(result); // Adicione isso para debug
-        
-        notificacao.innerText = result.message;
 
         // Verificação corrigida
         if (result.success) {
+            alert('Logado com sucesso!')
             localStorage.setItem('logado', 'true');
             localStorage.setItem('usuario', JSON.stringify({
                 nome: result.usuario.nome, // Usando result.usuario em vez de rows
                 login: result.usuario.login,
-                foto: result.usuario.foto || null // Usando o valor retornado pelo servidor
+                fotoUrl: result.usuario.foto || null // Usando o valor retornado pelo servidor
             }));
             
             // Fecha o modal de login
@@ -89,57 +88,39 @@ document.getElementById('fotoInput').addEventListener('change', function(e) {
 
     document.getElementById('frmCadastro').addEventListener('submit', async (e) => {
         e.preventDefault();
-        const nome = document.getElementById('cadNome').value;
-        const login = document.getElementById('cadLogin').value;
-        const senha = document.getElementById('cadSenha').value;
-        const confirma = document.getElementById('cadConfirmaSenha').value;
-        const foto = document.getElementById('nomeArquivo');
-        const notificacaoCadastro = document.getElementById('notificacaoCadastro');
-        const tipo = 'cadastro';
-
-        // Validação de senha
-        if (senha !== confirma) {
-            notificacaoCadastro.innerText = 'As senhas não coincidem.';
-            notificacaoCadastro.style.color = '#dc3545';
-            return;
-        }
-
-        // Cria FormData para enviar a imagem
+        const notificacao = document.getElementById('notificacaoCadastro');
         const formData = new FormData();
-        formData.append('nome', nome);
-        formData.append('login', login);
-        formData.append('senha', senha);
-        formData.append('foto', foto)
-        formData.append('tipo', tipo);
+        const fileInput = document.getElementById('fotoInput');
         
-
-
+        // Adiciona os valores dos campos ao FormData
+        formData.append('nome', document.getElementById('cadNome').value);
+        formData.append('login', document.getElementById('cadLogin').value);
+        formData.append('senha', document.getElementById('cadSenha').value);
+        formData.append('confirmarSenha', document.getElementById('cadConfirmaSenha').value);
+        formData.append('tipo', 'cadastro');
+        
+        // Adiciona o arquivo de imagem se existir
+        if (fileInput.files[0]) {
+            formData.append('foto', fileInput.files[0]);
+        }
+    
         try {
             const response = await fetch('/api/mysql', {
                 method: 'POST',
-                body: formData // Não usar headers Content-Type para FormData!
+                body: formData // Não definir Content-Type manualmente!
             });
-
             const result = await response.json();
+            console.log(result); // Adicione isso para debug
             
-            if (result.success) {
-                notificacaoCadastro.innerText = result.message;
-                notificacaoCadastro.style.color = '#28a745';
-                
-                // Limpa o formulário após 2 segundos
-                setTimeout(() => {
-                    document.getElementById('frmCadastro').reset();
-                    document.getElementById('preview-container').style.display = 'none';
-                    notificacaoCadastro.innerText = '';
-                }, 2000);
-            } else {
-                throw new Error(result.error || 'Erro no cadastro');
-            }
+            notificacao.innerText = result.message
+            
+            // Resto do seu código...
         } catch (error) {
             notificacaoCadastro.innerText = error.message;
             notificacaoCadastro.style.color = '#dc3545';
             console.error('Erro:', error);
         }
+
     });
 
 

@@ -18,7 +18,7 @@ if (!fs.existsSync(uploadDir)) {
     fs.mkdirSync(uploadDir);
 }
 
-// Configuração do Multer para upload de imagens
+// Configuração do Multer
 const storage = multer.diskStorage({
     destination: (req, file, cb) => cb(null, uploadDir),
     filename: (req, file, cb) => {
@@ -48,34 +48,28 @@ const pool = mysql.createPool({
 });
 
 app.post('/api/mysql', upload.single('foto'), async (req, res) => {
-    const { nome, login, senha, foto, tipo } = req.body;
-    const caminhoImagem = req.file?.path; // Caminho da imagem (se existir)
-
+    const { nome, login, senha, tipo } = req.body;
     switch (tipo) {
         case 'cadastro':
             try {
-                // Validação de tipo de arquivo
+                const fotoNome = req.file?.originalname;
+                const nomeArquivo = req.file?.filename;
                 if (req.file && !req.file.mimetype.startsWith('image/')) {
                     fs.unlinkSync(req.file.path);
                     return res.status(400).json({ error: 'Apenas imagens são permitidas!' });
-                }
-
-                // Validação básica
-                if (!nome || !login || !senha) {
-                    return res.status(400).json({ error: 'Preencha todos os campos obrigatórios!' });
-                }
-
-                // Insere no banco (com ou sem imagem)
-                const [rows] = await pool.query(
-                    "INSERT INTO `railway`.`usuarios` (`nome`, `login`, `senha`, `foto`) VALUES (?, ?, ?, ?)",
-                    [nome, login, senha, foto ]
-                );
+                }            
+                    
+                    const [rows] = await pool.query(
+                        `INSERT INTO usuarios (nome, login, senha, foto) 
+                         VALUES (?, ?, ?, ?)`,
+                        [nome, login, senha, fotoNome] // Armazena apenas o nome do arquivo
+                    );
 
                 if (rows.affectedRows > 0) {
                     res.json({ 
                         success: true,
                         message: 'Usuário cadastrado com sucesso!',
-                        fotoUrl: foto ? `/uploads/${path.basename(foto)}`  : null
+                        fotoUrl: nomeArquivo ? `/uploads/${path.basename(nomeArquivo)}`  : null,
                     });
                 } else {
                     throw new Error('Falha ao inserir no banco de dados.');
@@ -104,7 +98,7 @@ app.post('/api/mysql', upload.single('foto'), async (req, res) => {
                         usuario: {
                             nome: rows[0].nome,
                             login: rows[0].login,
-                            foto: rows[0].foto ? `/uploads/${path.basename(rows[0].foto)}` : null
+                            fotoUrl: rows[0].foto ? `/uploads/${path.basename(rows[0].foto)}` : null
                         }
                     });
                 } else {

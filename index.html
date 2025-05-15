@@ -306,15 +306,14 @@
 			<!-- Upload de Foto (adicionei como estava no original) -->
 						<div class="input-group mb-3">
 							<input type="file" name="foto" id="fotoInput" accept="image/*" class="d-none">
-							<button type="button" class="btn btn-outline-secondary" 
-							style="border-color: #e6a4c5; color: #b03b6f;"
-							onclick="document.getElementById('fotoInput').click()">
-								<i class="fas fa-camera"></i> Adicionar Foto
+							<button type="button" class="btn btn-outline-rosa" onclick="document.getElementById('fotoInput').click()"
+							style="color: #b03b6f; background-color: #fff0f6; border-color: #e6a4c5;">
+								<i class="fas fa-camera" style="color: #b03b6f;"></i> Selecionar Imagem
 							</button>
-							<span id="nomeArquivo" class="ms-2" style="color: #b47894;">Nenhuma foto selecionada</span>
+							<span id="nomeArquivo" class="ms-2 align-self-center" style="color: #b03b6f;">Nenhuma imagem selecionada</span>
 						</div>
-						<div id="previewContainer" class="text-center mb-3" style="display: none;">
-							<img id="previewFoto" src="#" alt="Pré-visualização" style="max-width: 100px; border-radius: 8px; border: 2px solid #e6a4c5;">
+						<div id="previewContainer" class="mt-2 text-center" style="display: none;">
+							<img id="previewFoto" src="#" alt="Pré-visualização" style="max-height: 150px;">
 						</div>
 			
 			<!-- Botão de Cadastro -->
