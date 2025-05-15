@@ -217,13 +217,18 @@ document.querySelectorAll('.add-to-cart').forEach(btn => {
     });
 });
 
-document.addEventListener('DOMContentLoaded', function() {
-    const carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
-    const totalItens = carrinho.reduce((total, item) => total + item.quantidade, 0);
-    const contador = document.getElementById('cart-count');
-    
-    if (contador) {
-        contador.textContent = totalItens;
-        contador.style.display = totalItens > 0 ? 'flex' : 'none';
-    }
+   document.addEventListener('DOMContentLoaded', function() {
+        const carrinho = document.getElementById('carrinho');
+        if(localStorage.getItem('logado') === 'true') {
+            const carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
+            const totalItens = carrinho.reduce((total, item) => total + item.quantidade, 0);
+            const contador = document.getElementById('cart-count');
+            
+            if (contador) {
+                contador.textContent = totalItens;
+                contador.style.display = totalItens > 0 ? 'flex' : 'none';
+            }
+        } else {
+            carrinho.style.display = 'none';
+        }
 });
