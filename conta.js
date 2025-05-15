@@ -3,10 +3,12 @@
         const usuarioLogado = localStorage.getItem('logado') === 'true';
         const usuarioData = localStorage.getItem('usuario') ? JSON.parse(localStorage.getItem('usuario')) : null;
 
+        console.log('Dados do usuário:', usuarioData);
+
+
         // Elementos da sidebar
         const nomeUsuario = document.getElementById('nomeUsuario');
         const emailUsuario = document.getElementById('emailUsuario');
-        const fotoPerfil = document.getElementById('fotoPerfil');
         const avatarPadrao = document.getElementById('avatarPadrao');
         const logoutItem = document.getElementById('logoutItem');
         const loginItem = document.getElementById('loginItem');
@@ -24,16 +26,6 @@
             loginEmail.textContent = usuarioData.login || 'Login não definido';
             dataCadastro.textContent = new Date().toLocaleDateString(); // Adapte para pegar do banco se necessário
 
-            // Foto do perfil
-            if (usuarioData.foto) {
-                fotoPerfil.src = usuarioData.foto;
-                fotoPerfil.style.display = 'block';
-                avatarPadrao.style.display = 'none';
-            } else {
-                fotoPerfil.style.display = 'none';
-                avatarPadrao.style.display = 'block';
-            }
-
             // Mostrar botão Sair
             logoutItem.style.display = 'block';
             loginItem.style.display = 'none';
@@ -46,7 +38,6 @@
             dataCadastro.textContent = 'Faça login para ver seus dados';
 
             // Mostrar ícone padrão
-            fotoPerfil.style.display = 'none';
             avatarPadrao.style.display = 'block';
 
             // Mostrar botão Logar

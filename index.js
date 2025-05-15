@@ -22,31 +22,30 @@ window.onload = function () {
     });
 
     document.getElementById('frmLogin').addEventListener('submit', async (e) => {
-    e.preventDefault();
-    
-    const login = document.getElementById('logLogin').value;
-    const senha = document.getElementById('logSenha').value;
-    const notificacao = document.getElementById('notificacaoLogin');
-    const tipo = 'login';
+        e.preventDefault();        
+        const login = document.getElementById('logLogin').value;
+        const senha = document.getElementById('logSenha').value;
+        const notificacao = document.getElementById('notificacaoLogin');
+        const tipo = 'login';
 
-    try {
-        const response = await fetch('/api/mysql', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ login, senha, tipo })
-        });
+        try {
+            const response = await fetch('/api/mysql', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ login, senha, tipo })
+            });
 
-        const result = await response.json();
-        console.log(result); // Adicione isso para debug
+            const result = await response.json();
+            console.log(result.message);
+            notificacao.innerText = result.message;
 
-        // Verificação corrigida
-        if (result.success) {
+            // Se o login for bem-sucedido (você pode ajustar a condição de sucesso como quiser)
+       if (result.success) {
             alert('Logado com sucesso!')
             localStorage.setItem('logado', 'true');
             localStorage.setItem('usuario', JSON.stringify({
                 nome: result.usuario.nome, // Usando result.usuario em vez de rows
                 login: result.usuario.login,
-                fotoUrl: result.usuario.foto || null // Usando o valor retornado pelo servidor
             }));
             
             // Fecha o modal de login
@@ -55,73 +54,48 @@ window.onload = function () {
                 if (loginModal) loginModal.hide();
             }
             
-            // Recarrega a página ou redireciona
-            window.location.reload();
         }
 
-    } catch (error) {
-        console.error('Erro ao enviar login:', error);
-        notificacao.innerText = 'Erro na conexão com o servidor.';
-        notificacao.style.color = 'red';
-    }
-});
-
-document.getElementById('fotoInput').addEventListener('change', function(e) {
-  const preview = document.getElementById('previewFoto');
-  const container = document.getElementById('previewContainer');
-  const label = document.getElementById('nomeArquivo');
-  
-  if (this.files && this.files[0]) {
-    label.textContent = this.files[0].name;
-    container.style.display = 'block';
-    
-    const reader = new FileReader();
-    reader.onload = function(e) {
-      preview.src = e.target.result;
-    }
-    reader.readAsDataURL(this.files[0]);
-  } else {
-    container.style.display = 'none';
-    label.textContent = 'Nenhuma foto selecionada';
-  }
-}); 
+        } catch (error) {
+            console.error('Erro ao enviar login:', error);
+            notificacao.innerText = 'Erro na conexão com o servidor.';
+        }
+    });
 
     document.getElementById('frmCadastro').addEventListener('submit', async (e) => {
         e.preventDefault();
-        const notificacao = document.getElementById('notificacaoCadastro');
-        const formData = new FormData();
-        const fileInput = document.getElementById('fotoInput');
-        
-        // Adiciona os valores dos campos ao FormData
-        formData.append('nome', document.getElementById('cadNome').value);
-        formData.append('login', document.getElementById('cadLogin').value);
-        formData.append('senha', document.getElementById('cadSenha').value);
-        formData.append('confirmarSenha', document.getElementById('cadConfirmaSenha').value);
-        formData.append('tipo', 'cadastro');
-        
-        // Adiciona o arquivo de imagem se existir
-        if (fileInput.files[0]) {
-            formData.append('foto', fileInput.files[0]);
-        }
+        const nome = document.getElementById('cadNome').value;
+        const login = document.getElementById('cadLogin').value;
+        const senha = document.getElementById('cadSenha').value;
+        const confirma = document.getElementById('cadConfirmaSenha').value
+        const notificacaoCadastro = document.getElementById('notificacaoCadastro');
+        const tipo = 'cadastro';
     
-        try {
+
+        if (senha !== confirma) {
+            notificacaoCadastro.innerText = 'As senhas não coincidem.';
+            return;
+        } else{
+
             const response = await fetch('/api/mysql', {
                 method: 'POST',
-                body: formData // Não definir Content-Type manualmente!
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ nome, login, senha, tipo })
             });
+        
             const result = await response.json();
-            console.log(result); // Adicione isso para debug
-            
-            notificacao.innerText = result.message
-            
-            // Resto do seu código...
-        } catch (error) {
-            notificacaoCadastro.innerText = error.message;
-            notificacaoCadastro.style.color = '#dc3545';
-            console.error('Erro:', error);
-        }
+            console.log(result.message);
+            notificacaoCadastro.innerText = result.message;
 
+            if (result.success || result.message.toLowerCase().includes("sucesso")) {
+                notificacaoCadastro.innerText = result.message;
+            }
+        }
     });
+
+
+    
+    
 
 
 /**
