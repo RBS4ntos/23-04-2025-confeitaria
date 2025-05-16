@@ -93,13 +93,6 @@ class Carrinho {
             });
         });
         
-        // Botão limpar carrinho
-        document.getElementById('clear-cart-btn').addEventListener('click', () => {
-            if (confirm('Tem certeza que deseja limpar seu carrinho?')) {
-                this.limparCarrinho();
-            }
-        });
-        
         // Botão finalizar compra
         document.getElementById('checkout-btn').addEventListener('click', () => {
             this.finalizarCompra();
@@ -199,11 +192,13 @@ class Carrinho {
             // Aqui você pode redirecionar para a página de login
             window.location.href = './index.html';
             return;
+        } else{
+            // Aqui você pode adicionar a lógica para finalizar a compra
+            alert('Compra finalizada com sucesso! Obrigado por sua compra.');
+            this.limparCarrinho();
+            
         }
         
-        // Aqui você pode adicionar a lógica para finalizar a compra
-        alert('Compra finalizada com sucesso! Obrigado por sua compra.');
-        this.limparCarrinho();
     }
 }
 
@@ -226,3 +221,48 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    const menuToggle = document.querySelector('.menu-toggle');
+    const mobileMenu = document.querySelector('.mobile-menu');
+    
+    menuToggle.addEventListener('click', function(e) {
+        e.stopPropagation(); // Impede a propagação do evento
+        mobileMenu.classList.toggle('active');
+        
+        const icon = menuToggle.querySelector('i');
+        if (mobileMenu.classList.contains('active')) {
+            icon.classList.remove('fa-bars');
+            icon.classList.add('fa-xmark');
+        } else {
+            icon.classList.remove('fa-xmark');
+            icon.classList.add('fa-bars');
+        }
+    });
+    
+    // Fecha o menu ao clicar fora
+    document.addEventListener('click', function(e) {
+        if (!mobileMenu.contains(e.target) && e.target !== menuToggle) {
+            mobileMenu.classList.remove('active');
+            const icon = menuToggle.querySelector('i');
+            icon.classList.remove('fa-xmark');
+            icon.classList.add('fa-bars');
+        }
+    });
+    
+    // Fecha o menu ao clicar nos links (mantém o mesmo)
+    const mobileLinks = document.querySelectorAll('.mobile-nav a');
+    mobileLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            mobileMenu.classList.remove('active');
+            const icon = menuToggle.querySelector('i');
+            icon.classList.remove('fa-xmark');
+            icon.classList.add('fa-bars');
+        });
+    });
+});
+
+function abrirHistoria() {
+    var historiaModal = new bootstrap.Modal(document.getElementById('historiaModal'));
+    historiaModal.show();
+  }

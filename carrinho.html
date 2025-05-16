@@ -10,41 +10,56 @@
 </head>
 <body>
     <header class="main-header">
-        <div class="header-top">
-            <div class="container">
-                <div class="header-contact">
-                    <span><i class="fas fa-phone"></i> (43) 9999-9999</span>
-                    <span><i class="fas fa-envelope"></i> contato@sonhodeacucar.com</span>
-                </div>
-                <div class="header-social">
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-whatsapp"></i></a>
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                </div>
-            </div>
-        </div>
-        <div class="header-main">
-            <div class="container">
-                <div class="header-content">
-                    <div class="logo">
-                        <i class="fa-solid fa-cake-candles"></i>
-                        <span>Um Sonho de Açúcar</span>
-                    </div>
-                    
-                    <nav class="main-nav">
-                        <ul>
-                            <li><a href="./index.html">Início</a></li>
-                            <li><a href="#" data-bs-toggle="modal" data-bs-target="#historiaModal">Sobre Nós</a></li>
-                            <li><a href="./conta.html">Conta</a></li>
-                        </ul>
-                    </nav>
-                    
-                        <div class="header-actions">
-                        </div>
-                </div>
-            </div>
-        </div>
-    </header>
+		<div class="header-top">
+			<div class="container">
+				<div class="header-contact">
+					<span><i class="fas fa-phone"></i> (43) 9999-9999</span>
+					<span><i class="fas fa-envelope"></i> contato@sonhodeacucar.com</span>
+				</div>
+				<div class="header-social">
+					<a href="#"><i class="fab fa-instagram"></i></a>
+					<a href="#"><i class="fab fa-whatsapp"></i></a>
+					<a href="#"><i class="fab fa-facebook-f"></i></a>
+				</div>
+			</div>
+		</div>
+
+		<div class="header-main">
+			<div class="container">
+				<div class="header-content">
+					<div class="logo">
+						<i class="fa-solid fa-cake-candles"></i>
+						<span>Um Sonho de Açúcar</span>
+					</div>
+					
+					<!-- Botão do menu mobile -->
+					<button class="menu-toggle" aria-label="Abrir menu">
+						<i class="fa-solid fa-bars"></i>
+					</button>
+					
+					<nav class="main-nav">
+						<ul>
+							<li><a href="./delivery.html">Delivery</a></li>
+							<li><a onclick="abrirHistoria()">Sobre Nós</a></li>
+							<li><a href="./conta.html">Conta</a></li>
+						</ul>
+					</nav>
+				</div>
+			</div>
+		</div>
+		
+		<!-- Menu Mobile -->
+		<div class="mobile-menu">
+			<nav class="mobile-nav">
+				<ul>
+					<li><a href="./index.html">Início</a></li>
+					<li><a href="./delivery.html">Delivery</a></li>
+					<li><a href="./conta.html">Conta</a></li>
+					<li><a onclick="abrirHistoria()">Sobre Nós</a></li>
+				</ul>
+			</nav>
+		</div>
+	</header>
 
     <main class="container">
         <div class="cart-container">
@@ -73,6 +88,38 @@
             </div>
         </div>
     </main>
+
+    <!-- Modal da História -->
+  	<div class="modal fade historia-modal" id="historiaModal" tabindex="-1" aria-hidden="true">
+    	<div class="modal-dialog modal-dialog-centered modal-lg">
+      		<div class="modal-content">
+        		<div class="modal-header">
+					<h2 class="modal-title">
+						<i class="fa-solid fa-cake-candles"></i> Nossa Doce História
+					</h2>
+					<button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<div style="text-align: center; margin-bottom: 20px;">
+						<img src="./Sonho.png" alt="Logo Sweet Dreams" style="width: 150px; margin-bottom: 15px;">
+					</div>
+					<p style="text-align: justify; line-height: 1.6;">
+						Um Sonho de Açúcar era uma confeitaria mágica que surgiu de um sonho de infância. Seus donos, apaixonados por doces e arte, decidiram transformar sua paixão em realidade. Com muito amor e dedicação, criaram uma loja encantadora, onde cada doce era uma obra de arte.          </p>
+					<p style="text-align: justify; line-height: 1.6;">
+						Os clientes adoravam visitar Um Sonho de Açúcar não apenas para satisfazer seu paladar, mas também para se maravilhar com as criações incríveis. Bolos, tortas, cupcakes e outros doces eram feitos com ingredientes frescos e amor.
+					</p>
+					<p style="text-align: justify; line-height: 1.6;">
+						Com o tempo, a confeitaria se tornou um ponto de encontro para amigos e familiares, que se reuniam para compartilhar momentos felizes e doces. Um Sonho de Açúcar era mais do que uma confeitaria - era um lugar onde a magia acontecia e os sonhos se tornavam realidade.
+					</p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn" data-bs-dismiss="modal" style="background-color: var(--rosa-escuro); color: white;">
+						Fechar
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
 
    <footer class="footer-fullwidth">
         <div class="footer-content-wrapper">

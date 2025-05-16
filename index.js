@@ -232,3 +232,51 @@ document.querySelectorAll('.add-to-cart').forEach(btn => {
             carrinho.style.display = 'none';
         }
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Elementos do menu mobile (mantemos o mesmo)
+    const menuToggle = document.querySelector('.menu-toggle');
+    const mobileMenu = document.querySelector('.mobile-menu');
+    
+    // Elemento do carrinho
+    const cartIcon = document.getElementById('carrinho');
+    
+    // Elemento/função do modal de história (substitua pelo seu se necessário)
+    const historiaTrigger = document.querySelector('[onclick="abrirHistoria()"]');
+    
+    // Controle do menu mobile
+    menuToggle.addEventListener('click', function(e) {
+        e.stopPropagation();
+        e.preventDefault();
+        
+        mobileMenu.classList.toggle('active');
+        const icon = menuToggle.querySelector('i');
+        icon.classList.toggle('fa-bars');
+        icon.classList.toggle('fa-xmark');
+    });
+    
+    // Controle do carrinho - previne qualquer outro comportamento
+    cartIcon.addEventListener('click', function(e) {
+        e.stopPropagation();
+        e.preventDefault();
+        window.location.href = './carrinho.html'; // Ou sua lógica para abrir o carrinho
+    });
+    
+    // Fecha o menu ao clicar fora
+    document.addEventListener('click', function(e) {
+        if (!mobileMenu.contains(e.target) && e.target !== menuToggle) {
+            mobileMenu.classList.remove('active');
+            const icon = menuToggle.querySelector('i');
+            icon.classList.remove('fa-xmark');
+            icon.classList.add('fa-bars');
+        }
+    });
+    
+    // Se você tiver uma função abrirHistoria separada
+    if (historiaTrigger) {
+        historiaTrigger.addEventListener('click', function(e) {
+            e.stopPropagation();
+            abrirHistoria(); // Sua função existente
+        });
+    }
+});

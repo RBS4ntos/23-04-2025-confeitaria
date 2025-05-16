@@ -46,3 +46,43 @@ document.querySelectorAll('.add-to-cart').forEach(btn => {
             carrinho.style.display = 'none';
         }
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    const menuToggle = document.querySelector('.menu-toggle');
+    const mobileMenu = document.querySelector('.mobile-menu');
+    
+    menuToggle.addEventListener('click', function(e) {
+        e.stopPropagation(); // Impede a propagação do evento
+        mobileMenu.classList.toggle('active');
+        
+        const icon = menuToggle.querySelector('i');
+        if (mobileMenu.classList.contains('active')) {
+            icon.classList.remove('fa-bars');
+            icon.classList.add('fa-xmark');
+        } else {
+            icon.classList.remove('fa-xmark');
+            icon.classList.add('fa-bars');
+        }
+    });
+    
+    // Fecha o menu ao clicar fora
+    document.addEventListener('click', function(e) {
+        if (!mobileMenu.contains(e.target) && e.target !== menuToggle) {
+            mobileMenu.classList.remove('active');
+            const icon = menuToggle.querySelector('i');
+            icon.classList.remove('fa-xmark');
+            icon.classList.add('fa-bars');
+        }
+    });
+    
+    // Fecha o menu ao clicar nos links (mantém o mesmo)
+    const mobileLinks = document.querySelectorAll('.mobile-nav a');
+    mobileLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            mobileMenu.classList.remove('active');
+            const icon = menuToggle.querySelector('i');
+            icon.classList.remove('fa-xmark');
+            icon.classList.add('fa-bars');
+        });
+    });
+});
